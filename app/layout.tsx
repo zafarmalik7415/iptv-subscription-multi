@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | IPTV Pro",
   },
   description:
-    "Get your IPTV subscription from £20/month. Over 18,500 live channels, sports, series and movies in HD, Full HD and 4K. Works on Smart TV, Fire Stick, mobile and PC. Free trial available.",
+    "Get your IPTV subscription from $20/month. Over 18,500 live channels, sports, series and movies in HD, Full HD and 4K. Works on Smart TV, Fire Stick, mobile and PC. Free trial available.",
   keywords: [
     "IPTV subscription",
     "buy IPTV",

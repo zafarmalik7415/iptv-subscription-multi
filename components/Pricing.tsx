@@ -10,25 +10,25 @@ const commonFeatures = [
 const plans = [
   {
     name: "1 Month",
-    price: "€20",
+    price: "$20",
     period: "/month",
     highlighted: false,
   },
   {
     name: "3 Months",
-    price: "€35",
+    price: "$35",
     period: "/3 months",
     highlighted: false,
   },
   {
     name: "6 Months",
-    price: "€55",
+    price: "$55",
     period: "/6 months",
     highlighted: true,
   },
   {
     name: "12 Months",
-    price: "€70",
+    price: "$70",
     period: "/12 months",
     highlighted: false,
   },
