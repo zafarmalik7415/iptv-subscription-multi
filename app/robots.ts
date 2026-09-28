@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://www.iptv-suscripcion.es";
+import { siteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { faqs } from "@/lib/faqs";
+import { faqs as staticFaqs } from "@/lib/faqs";
+import type { Faq } from "@/lib/sanity/types";
 
-export default function FAQ() {
+export default function FAQ({ faqs = staticFaqs }: { faqs?: Faq[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

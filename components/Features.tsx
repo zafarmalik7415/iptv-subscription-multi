@@ -1,4 +1,6 @@
-const features = [
+import type { Feature } from "@/lib/sanity/types";
+
+const DEFAULT_FEATURES: Feature[] = [
   {
     title: "More Than 18,500 Channels",
     description:
@@ -37,7 +39,11 @@ const features = [
   },
 ];
 
-export default function Features() {
+export default function Features({
+  features = DEFAULT_FEATURES,
+}: {
+  features?: Feature[];
+}) {
   return (
     <section id="channels" className="px-6 py-24">
       <div className="mx-auto max-w-7xl">

@@ -2,8 +2,8 @@ import Link from "next/link";
 import Pricing from "@/components/Pricing";
 import Devices from "@/components/Devices";
 import CountryFlag from "@/components/CountryFlag";
-import type { Country } from "@/lib/countries";
-import { countries } from "@/lib/countries";
+import { countries as staticCountries } from "@/lib/countries";
+import type { Country } from "@/lib/sanity/types";
 
 const whatsappNumber = "447362244111";
 
@@ -58,7 +58,13 @@ function faqsFor(country: Country) {
   ];
 }
 
-export default function CountryPageContent({ country }: { country: Country }) {
+export default function CountryPageContent({
+  country,
+  countries = staticCountries,
+}: {
+  country: Country;
+  countries?: Country[];
+}) {
   const otherCountries = countries.filter((c) => c.slug !== country.slug);
   const faqs = faqsFor(country);
 

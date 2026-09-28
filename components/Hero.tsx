@@ -1,13 +1,28 @@
 import Image from "next/image";
+import type { HeroContent } from "@/lib/sanity/types";
 
-const stats = [
-  { value: "+18,500", label: "live channels" },
-  { value: "+47,000", label: "series & movies" },
-  { value: "99.7%", label: "uptime" },
-  { value: "24/7", label: "support" },
-];
+const DEFAULT: HeroContent = {
+  badge: "The #1 IPTV Subscription Service",
+  titleLead: "Your",
+  titleAccent: "IPTV Subscription",
+  titleTail: ", No Buffering, No Hassle",
+  paragraph:
+    "Enjoy thousands of live channels, sports, series and movies in HD, Full HD and 4K on your Smart TV, phone, PC or Fire Stick. Activation in minutes and 24/7 support, every day of the year.",
+  primaryCta: { label: "Start Free Trial", href: "#plans" },
+  secondaryCta: { label: "View Compatible Devices", href: "#devices" },
+  stats: [
+    { value: "+18,500", label: "live channels" },
+    { value: "+47,000", label: "series & movies" },
+    { value: "99.7%", label: "uptime" },
+    { value: "24/7", label: "support" },
+  ],
+  imageUrl: null,
+};
 
-export default function Hero() {
+export default function Hero({ content }: { content?: HeroContent | null }) {
+  const c = content ?? DEFAULT;
+  const heroImage = c.imageUrl ?? "/hero-smart-tv.webp";
+
   return (
     <section className="relative overflow-hidden px-6 pt-16 pb-24 sm:pt-24">
       <div
@@ -20,32 +35,31 @@ export default function Hero() {
         <div>
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-cyan-300">
             <span className="h-2 w-2 rounded-full bg-cyan-400" />
-            The #1 IPTV Subscription Service
+            {c.badge}
           </p>
 
           <h1 className="font-[family-name:var(--font-poppins)] text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-            Your{" "}
-            <span className="text-gradient">IPTV Subscription</span>, No Buffering, No Hassle
+            {c.titleLead}{" "}
+            <span className="text-gradient">{c.titleAccent}</span>
+            {c.titleTail}
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-            Enjoy thousands of live channels, sports, series and movies in HD,
-            Full HD and 4K on your Smart TV, phone, PC or Fire Stick.
-            Activation in minutes and 24/7 support, every day of the year.
+            {c.paragraph}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
-              href="#plans"
+              href={c.primaryCta.href}
               className="btn-primary glow rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 px-8 py-4 text-center text-base font-semibold text-white transition hover:opacity-90"
             >
-              Start Free Trial
+              {c.primaryCta.label}
             </a>
             <a
-              href="#devices"
+              href={c.secondaryCta.href}
               className="rounded-full border border-white/15 bg-white/5 px-8 py-4 text-center text-base font-semibold text-white transition hover:bg-white/10"
             >
-              View Compatible Devices
+              {c.secondaryCta.label}
             </a>
           </div>
 
@@ -70,7 +84,7 @@ export default function Hero() {
           </div>
 
           <dl className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4">
-            {stats.map((stat) => (
+            {c.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-white">
@@ -84,7 +98,7 @@ export default function Hero() {
 
         <div className="relative mx-auto w-full max-w-2xl animate-float">
           <Image
-            src="/hero-smart-tv.webp"
+            src={heroImage}
             alt="IPTV subscription interface on a Smart TV with live channels"
             width={1342}
             height={1047}

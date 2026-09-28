@@ -32,6 +32,12 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
+
+# sanity studio (has its own package.json / node_modules)
+/sanity/node_modules
+/sanity/dist
+/sanity/.sanity
 
 # vercel
 .vercel

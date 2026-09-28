@@ -1,9 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { devices } from "@/lib/installationGuide";
+import { devices as staticDevices } from "@/lib/installationGuide";
+import type { DeviceGuide } from "@/lib/sanity/types";
 
-export default function InstallationSteps() {
+export default function InstallationSteps({
+  devices = staticDevices,
+}: {
+  devices?: DeviceGuide[];
+}) {
   const [activeId, setActiveId] = useState(devices[0].id);
   const active = devices.find((d) => d.id === activeId) ?? devices[0];
 

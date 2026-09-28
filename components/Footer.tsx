@@ -1,6 +1,8 @@
 import Link from "next/link";
 import CountryFlag from "@/components/CountryFlag";
-import { countries } from "@/lib/countries";
+import { countries as staticCountries } from "@/lib/countries";
+import { supportEmail } from "@/lib/site";
+import type { Country } from "@/lib/sanity/types";
 
 const columns = [
   {
@@ -10,6 +12,7 @@ const columns = [
       { label: "Devices", href: "/#devices" },
       { label: "Installation Guide", href: "/installation-guide" },
       { label: "Plans & Pricing", href: "/#plans" },
+      { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/#faq" },
     ],
   },
@@ -24,9 +27,14 @@ const columns = [
 ];
 
 const paymentMethods = ["Visa", "Mastercard", "PayPal", "Bitcoin"];
-const featuredCountries = countries.slice(0, 4);
 
-export default function Footer() {
+export default function Footer({
+  countries = staticCountries,
+}: {
+  countries?: Country[];
+}) {
+  const featuredCountries = countries.slice(0, 4);
+
   return (
     <footer className="border-t border-white/5 px-6 py-16">
       <div className="mx-auto grid max-w-7xl gap-12 sm:grid-cols-2 lg:grid-cols-5">
@@ -102,8 +110,8 @@ export default function Footer() {
           <h3 className="text-sm font-semibold text-white">Contact</h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-400">
             <li>
-              <a href="mailto:support@iptvpro-subscription.com" className="hover:text-white">
-                support@iptvpro-subscription.com
+              <a href={`mailto:${supportEmail}`} className="hover:text-white">
+                {supportEmail}
               </a>
             </li>
             <li>

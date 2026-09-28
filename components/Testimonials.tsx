@@ -1,4 +1,6 @@
-const testimonials = [
+import type { Testimonial } from "@/lib/sanity/types";
+
+const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
     name: "Carl M.",
     location: "London",
@@ -61,7 +63,11 @@ const testimonials = [
   },
 ];
 
-export default function Testimonials() {
+export default function Testimonials({
+  testimonials = DEFAULT_TESTIMONIALS,
+}: {
+  testimonials?: Testimonial[];
+}) {
   return (
     <section id="reviews" className="px-6 py-24">
       <div className="mx-auto max-w-7xl">

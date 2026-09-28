@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CountryFlag from "@/components/CountryFlag";
-import { countries } from "@/lib/countries";
+import { getCountries } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Countries Available",
@@ -15,12 +15,13 @@ export const metadata: Metadata = {
   },
 };
 
-const regions = Array.from(new Set(countries.map((c) => c.region)));
+export default async function CountriesPage() {
+  const countries = await getCountries();
+  const regions = Array.from(new Set(countries.map((c) => c.region)));
 
-export default function CountriesPage() {
   return (
     <>
-      <Header />
+      <Header countries={countries} />
       <main className="flex-1 px-6 py-24">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="font-[family-name:var(--font-poppins)] text-4xl font-extrabold text-white sm:text-5xl">
@@ -64,7 +65,7 @@ export default function CountriesPage() {
           ))}
         </div>
       </main>
-      <Footer />
+      <Footer countries={countries} />
       <WhatsAppButton />
     </>
   );

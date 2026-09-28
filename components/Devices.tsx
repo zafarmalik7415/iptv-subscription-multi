@@ -1,4 +1,6 @@
-const devices = [
+import type { DeviceOption } from "@/lib/sanity/types";
+
+const DEFAULT_DEVICES: DeviceOption[] = [
   { name: "Smart TV", icon: "📺" },
   { name: "Fire Stick / Fire TV", icon: "🔥" },
   { name: "Android / iOS", icon: "📱" },
@@ -7,7 +9,11 @@ const devices = [
   { name: "Android TV Box", icon: "🎛️" },
 ];
 
-export default function Devices() {
+export default function Devices({
+  devices = DEFAULT_DEVICES,
+}: {
+  devices?: DeviceOption[];
+}) {
   return (
     <section id="devices" className="px-6 py-24">
       <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-10 sm:p-16">

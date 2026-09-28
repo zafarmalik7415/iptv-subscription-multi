@@ -3,7 +3,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import InstallationSteps from "@/components/InstallationSteps";
-import { prerequisites, tips } from "@/lib/installationGuide";
+import {
+  getCountries,
+  getDeviceGuides,
+  getInstallationPrerequisites,
+  getInstallationTips,
+} from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "IPTV Installation Guide",
@@ -14,10 +19,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function InstallationGuidePage() {
+export default async function InstallationGuidePage() {
+  const [countries, deviceGuides, prerequisites, tips] = await Promise.all([
+    getCountries(),
+    getDeviceGuides(),
+    getInstallationPrerequisites(),
+    getInstallationTips(),
+  ]);
+
   return (
     <>
-      <Header />
+      <Header countries={countries} />
       <main className="flex-1">
         <section className="relative overflow-hidden px-6 pt-16 pb-12 sm:pt-24">
           <div
@@ -67,7 +79,7 @@ export default function InstallationGuidePage() {
               Choose Your Device
             </h2>
             <div className="mt-10">
-              <InstallationSteps />
+              <InstallationSteps devices={deviceGuides} />
             </div>
           </div>
         </section>
@@ -111,7 +123,7 @@ export default function InstallationGuidePage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer countries={countries} />
       <WhatsAppButton />
     </>
   );

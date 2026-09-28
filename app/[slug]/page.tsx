@@ -4,9 +4,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CountryPageContent from "@/components/CountryPageContent";
-import { countries, getCountry } from "@/lib/countries";
+import { getCountries, getCountryBySlug, getPostSlugs } from "@/lib/content";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const countries = await getCountries();
   return countries.map((country) => ({ slug: country.slug }));
 }
 
@@ -16,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const country = getCountry(slug);
+  const country = await getCountryBySlug(slug);
   if (!country) return {};
 
   const title = `IPTV Subscription in ${country.name}`;
@@ -41,7 +42,16 @@ export default async function CountryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const country = getCountry(slug);
+
+  // `/blog` and other reserved routes are handled by their own segments; guard
+  // anyway in case a post slug ever collides with this catch-all.
+  const reserved = new Set(await getPostSlugs());
+  if (reserved.has(slug)) notFound();
+
+  const [country, countries] = await Promise.all([
+    getCountryBySlug(slug),
+    getCountries(),
+  ]);
 
   if (!country) {
     notFound();
@@ -49,9 +59,9 @@ export default async function CountryPage({
 
   return (
     <>
-      <Header />
-      <CountryPageContent country={country} />
-      <Footer />
+      <Header countries={countries} />
+      <CountryPageContent country={country} countries={countries} />
+      <Footer countries={countries} />
       <WhatsAppButton />
     </>
   );

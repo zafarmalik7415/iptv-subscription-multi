@@ -1,4 +1,6 @@
-const steps = [
+import type { HowItWorksStep } from "@/lib/sanity/types";
+
+const DEFAULT_STEPS: HowItWorksStep[] = [
   {
     number: "1",
     title: "Choose Your Plan",
@@ -25,7 +27,11 @@ const steps = [
   },
 ];
 
-export default function HowItWorks() {
+export default function HowItWorks({
+  steps = DEFAULT_STEPS,
+}: {
+  steps?: HowItWorksStep[];
+}) {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-7xl">

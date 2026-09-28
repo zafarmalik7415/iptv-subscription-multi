@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,8 +15,6 @@ const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
 });
-
-const siteUrl = "https://www.iptvpro-subscription.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,9 +36,9 @@ export const metadata: Metadata = {
     "IPTV no buffering",
     "IPTV service",
   ],
-  authors: [{ name: "IPTV Pro" }],
-  creator: "IPTV Pro",
-  publisher: "IPTV Pro",
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
   alternates: {
     canonical: "/",
   },
@@ -47,16 +46,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "IPTV Pro",
+    siteName,
     title: "IPTV Subscription | Thousands Of Channels In HD, Full HD & 4K",
     description:
       "Over 18,500 live channels, series and movies. Works on every device. Free trial available.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "IPTV Pro",
+        url: "/hero-smart-tv.webp",
+        width: 1342,
+        height: 1047,
+        alt: siteName,
       },
     ],
   },
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
     title: "IPTV Subscription | Thousands Of Channels In HD, Full HD & 4K",
     description:
       "Over 18,500 live channels, series and movies. Free trial available.",
-    images: ["/og-image.png"],
+    images: ["/hero-smart-tv.webp"],
   },
   robots: {
     index: true,
@@ -89,9 +88,8 @@ export const viewport: Viewport = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "IPTV Pro",
+  name: siteName,
   url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
   description:
     "IPTV subscription service with thousands of live channels, sports, series and movies in HD, Full HD and 4K.",
   sameAs: [],

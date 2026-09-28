@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import CountryFlag from "@/components/CountryFlag";
-import { countries } from "@/lib/countries";
+import { countries as staticCountries } from "@/lib/countries";
+import type { Country } from "@/lib/sanity/types";
 
 const links = [
   { href: "/#channels", label: "Channels" },
@@ -11,6 +12,7 @@ const links = [
   { href: "/installation-guide", label: "Installation Guide" },
   { href: "/#plans", label: "Plans" },
   { href: "/#reviews", label: "Reviews" },
+  { href: "/blog", label: "Blog" },
   { href: "/#faq", label: "FAQ" },
 ];
 
@@ -32,9 +34,11 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 function CountriesMenu({
+  countries,
   onNavigate,
   className = "",
 }: {
+  countries: Country[];
   onNavigate?: () => void;
   className?: string;
 }) {
@@ -55,7 +59,11 @@ function CountriesMenu({
   );
 }
 
-export default function Header() {
+export default function Header({
+  countries = staticCountries,
+}: {
+  countries?: Country[];
+}) {
   const [open, setOpen] = useState(false);
   const [countriesOpen, setCountriesOpen] = useState(false);
   const [mobileCountriesOpen, setMobileCountriesOpen] = useState(false);
@@ -113,7 +121,10 @@ export default function Header() {
             {countriesOpen && (
               <div className="absolute left-1/2 top-full z-50 w-[420px] -translate-x-1/2 pt-3">
                 <div className="glow rounded-2xl border border-white/10 bg-[#0b0f19] p-4">
-                  <CountriesMenu onNavigate={() => setCountriesOpen(false)} />
+                  <CountriesMenu
+                    countries={countries}
+                    onNavigate={() => setCountriesOpen(false)}
+                  />
                   <Link
                     href="/countries"
                     onClick={() => setCountriesOpen(false)}
@@ -183,7 +194,7 @@ export default function Header() {
               </button>
               {mobileCountriesOpen && (
                 <div className="mt-3">
-                  <CountriesMenu onNavigate={() => setOpen(false)} />
+                  <CountriesMenu countries={countries} onNavigate={() => setOpen(false)} />
                   <Link
                     href="/countries"
                     onClick={() => setOpen(false)}

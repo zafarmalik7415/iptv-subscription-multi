@@ -1,38 +1,24 @@
-const commonFeatures = [
-  "+18,500 channels",
-  "4K Ultra HD",
-  "Anti-freeze technology",
-  "All devices",
-  "EPG guide included",
-  "24/7 support",
-];
+import type { PricingContent } from "@/lib/sanity/types";
 
-const plans = [
-  {
-    name: "1 Month",
-    price: "$20",
-    period: "/month",
-    highlighted: false,
-  },
-  {
-    name: "3 Months",
-    price: "$35",
-    period: "/3 months",
-    highlighted: false,
-  },
-  {
-    name: "6 Months",
-    price: "$55",
-    period: "/6 months",
-    highlighted: true,
-  },
-  {
-    name: "12 Months",
-    price: "$70",
-    period: "/12 months",
-    highlighted: false,
-  },
-];
+const DEFAULT_CONTENT: PricingContent = {
+  heading: "IPTV Subscription Plans For Every Need",
+  subheading:
+    "Pay once per term. No contract and no hidden fees. Every plan includes +18,500 channels, every device and 24/7 support.",
+  commonFeatures: [
+    "+18,500 channels",
+    "4K Ultra HD",
+    "Anti-freeze technology",
+    "All devices",
+    "EPG guide included",
+    "24/7 support",
+  ],
+  plans: [
+    { name: "1 Month", price: "$20", period: "/month", highlighted: false },
+    { name: "3 Months", price: "$35", period: "/3 months", highlighted: false },
+    { name: "6 Months", price: "$55", period: "/6 months", highlighted: true },
+    { name: "12 Months", price: "$70", period: "/12 months", highlighted: false },
+  ],
+};
 
 const whatsappNumber = "447362244111";
 
@@ -44,17 +30,22 @@ function WhatsAppIcon() {
   );
 }
 
-export default function Pricing() {
+export default function Pricing({
+  content,
+}: {
+  content?: PricingContent | null;
+}) {
+  const { heading, subheading, commonFeatures, plans } = content ?? DEFAULT_CONTENT;
+
   return (
     <section id="plans" className="px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-white sm:text-4xl">
-            IPTV Subscription Plans For Every Need
+            {heading}
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-400">
-            Pay once per term. No contract and no hidden fees. Every plan
-            includes +18,500 channels, every device and 24/7 support.
+            {subheading}
           </p>
         </div>
 
