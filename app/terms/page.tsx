@@ -8,7 +8,7 @@ import { siteName, supportEmail } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: `The terms and conditions for using the ${siteName} IPTV subscription service.`,
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: "/terms/" },
 };
 
 const sections = [

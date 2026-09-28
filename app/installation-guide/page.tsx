@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Install your IPTV subscription on Amazon Firestick, Android TV, iPhone, Samsung, LG and more. Step-by-step guide, ready in under 6 minutes.",
   alternates: {
-    canonical: "/installation-guide",
+    canonical: "/installation-guide/",
   },
 };
 

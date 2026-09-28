@@ -28,7 +28,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: `/blog/${post.slug}/` },
     openGraph: {
       type: "article",
       title: `${title} | IPTV Pro`,
@@ -84,7 +84,7 @@ export default async function BlogPostPage({
       <main className="flex-1 px-6 py-20">
         <article className="mx-auto max-w-3xl">
           <Link
-            href="/blog"
+            href="/blog/"
             className="text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
           >
             ← Back to blog

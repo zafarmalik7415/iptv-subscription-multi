@@ -13,8 +13,8 @@ const brandAccent = brandRest.join(" ");
 
 const links = [
   { href: "/#channels", label: "Channels" },
-  { href: "/installation-guide", label: "Installation Guide" },
-  { href: "/blog", label: "Blog" },
+  { href: "/installation-guide/", label: "Installation Guide" },
+  { href: "/blog/", label: "Blog" },
 ];
 
 function ChevronIcon({ open }: { open: boolean }) {
@@ -48,7 +48,7 @@ function CountriesMenu({
       {countries.map((country) => (
         <Link
           key={country.slug}
-          href={`/${country.slug}`}
+          href={`/${country.slug}/`}
           onClick={onNavigate}
           className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
         >
@@ -110,7 +110,7 @@ export default function Header({
           >
             <div className="flex items-center gap-1">
               <Link
-                href="/countries"
+                href="/countries/"
                 className="text-sm font-medium text-slate-300 transition hover:text-white"
               >
                 Countries
@@ -133,7 +133,7 @@ export default function Header({
                     onNavigate={() => setCountriesOpen(false)}
                   />
                   <Link
-                    href="/countries"
+                    href="/countries/"
                     onClick={() => setCountriesOpen(false)}
                     className="mt-3 block rounded-lg border-t border-white/5 px-2.5 pt-3 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
                   >
@@ -193,7 +193,7 @@ export default function Header({
             <li>
               <div className="flex w-full items-center justify-between">
                 <Link
-                  href="/countries"
+                  href="/countries/"
                   onClick={() => setOpen(false)}
                   className="text-sm font-medium text-slate-300 hover:text-white"
                 >
@@ -212,7 +212,7 @@ export default function Header({
                 <div className="mt-3">
                   <CountriesMenu countries={countries} onNavigate={() => setOpen(false)} />
                   <Link
-                    href="/countries"
+                    href="/countries/"
                     onClick={() => setOpen(false)}
                     className="mt-2 block px-2.5 text-sm font-semibold text-cyan-300"
                   >

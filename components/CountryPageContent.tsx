@@ -190,7 +190,7 @@ export default function CountryPageContent({
             {otherCountries.map((c) => (
               <Link
                 key={c.slug}
-                href={`/${c.slug}`}
+                href={`/${c.slug}/`}
                 className="glass flex items-start gap-3 rounded-xl px-4 py-3 transition hover:border-cyan-400/30"
               >
                 <CountryFlag code={c.code} className="mt-0.5 h-4 w-6 flex-none" />

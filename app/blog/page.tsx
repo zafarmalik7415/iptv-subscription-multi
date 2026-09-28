@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Guides, comparisons and news about IPTV: how to set it up, pick a plan, fix buffering and get the most out of your subscription.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog/" },
 };
 
 function formatDate(value: string | null) {
@@ -48,7 +48,7 @@ export default async function BlogPage() {
             {posts.map((post) => (
               <Link
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}/`}
                 className="glass group flex flex-col overflow-hidden rounded-2xl transition hover:border-cyan-400/30"
               >
                 {post.mainImageUrl && (

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "See which countries our IPTV subscription is available in: premium live streaming, series and movies in HD, Full HD and 4K.",
   alternates: {
-    canonical: "/countries",
+    canonical: "/countries/",
   },
 };
 
@@ -46,7 +46,7 @@ export default async function CountriesPage() {
                   .map((country) => (
                     <Link
                       key={country.slug}
-                      href={`/${country.slug}`}
+                      href={`/${country.slug}/`}
                       className="glass flex items-start gap-4 rounded-2xl px-5 py-4 transition hover:border-cyan-400/30"
                     >
                       <CountryFlag code={country.code} className="mt-0.5 h-6 w-9 flex-none" />

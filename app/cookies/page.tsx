@@ -8,7 +8,7 @@ import { siteName, supportEmail } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: `How ${siteName} uses cookies and similar technologies.`,
-  alternates: { canonical: "/cookies" },
+  alternates: { canonical: "/cookies/" },
 };
 
 const sections = [

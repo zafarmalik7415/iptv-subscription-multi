@@ -14,16 +14,16 @@ const columns = [
     title: "Service",
     links: [
       { label: "Channels", href: "/#channels" },
-      { label: "Installation Guide", href: "/installation-guide" },
-      { label: "Blog", href: "/blog" },
+      { label: "Installation Guide", href: "/installation-guide/" },
+      { label: "Blog", href: "/blog/" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Terms & Conditions", href: "/terms" },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Terms & Conditions", href: "/terms/" },
+      { label: "Privacy Policy", href: "/privacy/" },
+      { label: "Cookie Policy", href: "/cookies/" },
     ],
   },
 ];
@@ -78,7 +78,7 @@ export default function Footer({
             {featuredCountries.map((country) => (
               <li key={country.slug}>
                 <Link
-                  href={`/${country.slug}`}
+                  href={`/${country.slug}/`}
                   className="flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
                 >
                   <CountryFlag code={country.code} className="h-3 w-[18px] flex-none" />
@@ -88,7 +88,7 @@ export default function Footer({
             ))}
             <li>
               <Link
-                href="/countries"
+                href="/countries/"
                 className="text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
               >
                 View all countries →
@@ -116,7 +116,7 @@ export default function Footer({
         </p>
         <p>
           You are responsible for the content you stream. See our{" "}
-          <a href="/terms" className="underline hover:text-slate-300">
+          <a href="/terms/" className="underline hover:text-slate-300">
             terms of use
           </a>
           .

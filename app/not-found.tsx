@@ -36,7 +36,7 @@ export default async function NotFound() {
               Back To Home
             </Link>
             <Link
-              href="/countries"
+              href="/countries/"
               className="rounded-full border border-white/15 bg-white/5 px-8 py-4 text-center text-base font-semibold text-white transition hover:bg-white/10"
             >
               Browse Countries

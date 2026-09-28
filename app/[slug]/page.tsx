@@ -27,7 +27,7 @@ export async function generateMetadata({
     title,
     description,
     alternates: {
-      canonical: `/${country.slug}`,
+      canonical: `/${country.slug}/`,
     },
     openGraph: {
       title: `${title} | IPTV Pro`,

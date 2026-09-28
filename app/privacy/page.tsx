@@ -8,7 +8,7 @@ import { siteName, supportEmail } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `How ${siteName} collects, uses and protects your information.`,
-  alternates: { canonical: "/privacy" },
+  alternates: { canonical: "/privacy/" },
 };
 
 const sections = [
