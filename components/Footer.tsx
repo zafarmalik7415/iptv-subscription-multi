@@ -13,6 +13,7 @@ const columns = [
   {
     title: "Service",
     links: [
+      { label: "Home", href: "/" },
       { label: "Channels", href: "/#channels" },
       { label: "Installation Guide", href: "/installation-guide/" },
       { label: "Blog", href: "/blog/" },
