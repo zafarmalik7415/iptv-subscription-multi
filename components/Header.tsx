@@ -13,12 +13,8 @@ const brandAccent = brandRest.join(" ");
 
 const links = [
   { href: "/#channels", label: "Channels" },
-  { href: "/#devices", label: "Devices" },
   { href: "/installation-guide", label: "Installation Guide" },
-  { href: "/#plans", label: "Plans" },
-  { href: "/#reviews", label: "Reviews" },
   { href: "/blog", label: "Blog" },
-  { href: "/#faq", label: "FAQ" },
 ];
 
 function ChevronIcon({ open }: { open: boolean }) {
@@ -95,7 +91,7 @@ export default function Header({
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
-          {links.slice(0, 2).map((link) => (
+          {links.slice(0, 1).map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -148,7 +144,7 @@ export default function Header({
             )}
           </li>
 
-          {links.slice(2).map((link) => (
+          {links.slice(1).map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -182,7 +178,7 @@ export default function Header({
       {open && (
         <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/5 bg-[#0b0f19] px-6 pb-6 md:hidden">
           <ul className="flex flex-col gap-4 pt-4">
-            {links.slice(0, 2).map((link) => (
+            {links.slice(0, 1).map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
@@ -226,7 +222,7 @@ export default function Header({
               )}
             </li>
 
-            {links.slice(2).map((link) => (
+            {links.slice(1).map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}

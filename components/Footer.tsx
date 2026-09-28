@@ -14,11 +14,8 @@ const columns = [
     title: "Service",
     links: [
       { label: "Channels", href: "/#channels" },
-      { label: "Devices", href: "/#devices" },
       { label: "Installation Guide", href: "/installation-guide" },
-      { label: "Plans & Pricing", href: "/#plans" },
       { label: "Blog", href: "/blog" },
-      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
