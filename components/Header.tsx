@@ -112,14 +112,22 @@ export default function Header({
             onMouseEnter={() => setCountriesOpen(true)}
             onMouseLeave={() => setCountriesOpen(false)}
           >
-            <button
-              onClick={() => setCountriesOpen((v) => !v)}
-              aria-expanded={countriesOpen}
-              className="flex items-center gap-1 text-sm font-medium text-slate-300 transition hover:text-white"
-            >
-              Countries
-              <ChevronIcon open={countriesOpen} />
-            </button>
+            <div className="flex items-center gap-1">
+              <Link
+                href="/countries"
+                className="text-sm font-medium text-slate-300 transition hover:text-white"
+              >
+                Countries
+              </Link>
+              <button
+                onClick={() => setCountriesOpen((v) => !v)}
+                aria-expanded={countriesOpen}
+                aria-label="Toggle countries menu"
+                className="text-slate-300 transition hover:text-white"
+              >
+                <ChevronIcon open={countriesOpen} />
+              </button>
+            </div>
 
             {countriesOpen && (
               <div className="absolute left-1/2 top-full z-50 w-[420px] -translate-x-1/2 pt-3">
@@ -187,14 +195,23 @@ export default function Header({
             ))}
 
             <li>
-              <button
-                onClick={() => setMobileCountriesOpen((v) => !v)}
-                aria-expanded={mobileCountriesOpen}
-                className="flex w-full items-center justify-between text-sm font-medium text-slate-300 hover:text-white"
-              >
-                Countries
-                <ChevronIcon open={mobileCountriesOpen} />
-              </button>
+              <div className="flex w-full items-center justify-between">
+                <Link
+                  href="/countries"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-slate-300 hover:text-white"
+                >
+                  Countries
+                </Link>
+                <button
+                  onClick={() => setMobileCountriesOpen((v) => !v)}
+                  aria-expanded={mobileCountriesOpen}
+                  aria-label="Toggle countries menu"
+                  className="p-1 text-slate-300 hover:text-white"
+                >
+                  <ChevronIcon open={mobileCountriesOpen} />
+                </button>
+              </div>
               {mobileCountriesOpen && (
                 <div className="mt-3">
                   <CountriesMenu countries={countries} onNavigate={() => setOpen(false)} />
