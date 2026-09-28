@@ -82,7 +82,7 @@ export const countries: Country[] = [
     region: "Middle East & North Africa",
   },
   {
-    slug: "iptv-subscription-united-states",
+    slug: "iptv-subscription-usa",
     name: "United States",
     demonym: "American",
     code: "US",
@@ -100,7 +100,7 @@ export const countries: Country[] = [
     region: "Americas",
   },
   {
-    slug: "iptv-subscription-united-kingdom",
+    slug: "iptv-subscription-uk",
     name: "United Kingdom",
     demonym: "British",
     code: "GB",
