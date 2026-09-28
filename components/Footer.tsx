@@ -1,8 +1,13 @@
 import Link from "next/link";
 import CountryFlag from "@/components/CountryFlag";
+import Logo from "@/components/Logo";
+import PaymentIcons from "@/components/PaymentIcons";
 import { countries as staticCountries } from "@/lib/countries";
-import { supportEmail } from "@/lib/site";
+import { siteName } from "@/lib/site";
 import type { Country } from "@/lib/sanity/types";
+
+const [brandLead, ...brandRest] = siteName.split(" ");
+const brandAccent = brandRest.join(" ");
 
 const columns = [
   {
@@ -26,8 +31,6 @@ const columns = [
   },
 ];
 
-const paymentMethods = ["Visa", "Mastercard", "PayPal", "Bitcoin"];
-
 export default function Footer({
   countries = staticCountries,
 }: {
@@ -40,26 +43,17 @@ export default function Footer({
       <div className="mx-auto grid max-w-7xl gap-12 sm:grid-cols-2 lg:grid-cols-5">
         <div>
           <Link href="/" className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 via-indigo-500 to-pink-500 font-[family-name:var(--font-poppins)] text-lg font-bold text-white">
-              TV
-            </span>
+            <Logo />
             <span className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-white">
-              IPTV<span className="text-gradient">Pro</span>
+              {brandLead} <span className="text-gradient">{brandAccent}</span>
             </span>
           </Link>
           <p className="mt-4 text-sm text-slate-400">
             We&apos;ve been delivering IPTV streaming to customers worldwide
             since 2021. Friendly support, no bots.
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {paymentMethods.map((method) => (
-              <span
-                key={method}
-                className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-400"
-              >
-                {method}
-              </span>
-            ))}
+          <div className="mt-4">
+            <PaymentIcons />
           </div>
         </div>
 
@@ -110,11 +104,6 @@ export default function Footer({
           <h3 className="text-sm font-semibold text-white">Contact</h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-400">
             <li>
-              <a href={`mailto:${supportEmail}`} className="hover:text-white">
-                {supportEmail}
-              </a>
-            </li>
-            <li>
               <a href="https://wa.me/447362244111" className="hover:text-white">
                 WhatsApp: +44 7362 244111
               </a>
@@ -126,7 +115,7 @@ export default function Footer({
 
       <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-center text-xs text-slate-500 sm:flex-row sm:text-left">
         <p>
-          © {new Date().getFullYear()} IPTV Pro. All rights reserved.
+          © {new Date().getFullYear()} {siteName}. All rights reserved.
         </p>
         <p>
           You are responsible for the content you stream. See our{" "}

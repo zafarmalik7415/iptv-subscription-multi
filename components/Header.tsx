@@ -3,8 +3,13 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import CountryFlag from "@/components/CountryFlag";
+import Logo from "@/components/Logo";
 import { countries as staticCountries } from "@/lib/countries";
+import { siteName } from "@/lib/site";
 import type { Country } from "@/lib/sanity/types";
+
+const [brandLead, ...brandRest] = siteName.split(" ");
+const brandAccent = brandRest.join(" ");
 
 const links = [
   { href: "/#channels", label: "Channels" },
@@ -83,11 +88,9 @@ export default function Header({
     <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0b0f19]/80 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 via-indigo-500 to-pink-500 font-[family-name:var(--font-poppins)] text-lg font-bold text-white">
-            TV
-          </span>
+          <Logo />
           <span className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-white">
-            IPTV<span className="text-gradient">Pro</span>
+            {brandLead} <span className="text-gradient">{brandAccent}</span>
           </span>
         </Link>
 
