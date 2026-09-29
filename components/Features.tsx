@@ -53,8 +53,8 @@ export default function Features({
             <span className="text-gradient">IPTV Subscription</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-400">
-            A platform built for reliability, with the best value for money
-            on the market.
+            One of the best IPTV subscriptions on the market, built for
+            reliability and real value.
           </p>
         </div>
 

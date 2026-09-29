@@ -2,31 +2,46 @@ export const faqs = [
   {
     question: "What is an IPTV subscription?",
     answer:
-      "It's a streaming service that lets you watch live TV channels, series and movies over the internet, on your Smart TV, phone, PC or devices like Fire Stick.",
+      "An IPTV subscription is a streaming service that lets you watch live TV channels, series and movies over the internet, on your Smart TV, phone, PC or a device like Fire Stick. It works the same way as apps such as Netflix, but with live channels included.",
   },
   {
-    question: "How long does activation take after purchase?",
+    question: "Is IPTV legal?",
     answer:
-      "Activation is instant in most cases. You'll receive your login details by email within minutes of confirming payment.",
+      "IPTV as a technology is legal. It's simply a way of delivering TV over the internet, the same method used by Netflix and YouTube. What matters is the service behind it, so always choose a provider that is clear about what it offers.",
   },
   {
-    question: "Is it compatible with Smart TV, Fire Stick and mobile?",
+    question: "How much does an IPTV subscription cost?",
     answer:
-      "Yes. Our IPTV subscription works on Smart TVs (Samsung, LG), Fire Stick, Android TV Box, MAG Box, Android and iOS phones, and PC or Mac.",
+      "Our plans start at $20 for one month, with better value on the 3, 6 and 12 month options. That works out far cheaper than most cable packages, while still including every channel and device.",
   },
   {
-    question: "Can I cancel my subscription whenever I want?",
+    question: "Can I try an IPTV free trial before I subscribe?",
     answer:
-      "Yes, there's no long-term commitment. Choose the plan that fits you best (1, 3, 6 or 12 months) and it won't auto-renew without your confirmation.",
+      "Yes. Message us on WhatsApp and we'll set you up with a short free trial so you can test the channels and picture quality on your own device before you buy an IPTV subscription.",
   },
   {
-    question: "What picture quality do you offer?",
+    question: "How long does it take to buy an IPTV subscription and get set up?",
     answer:
-      "We offer channels in HD, Full HD and 4K, with servers optimized to deliver stable playback wherever you are.",
+      "Activation is instant in most cases. Once you buy an IPTV subscription, you'll get your login details within minutes so you can start watching the same day.",
   },
   {
-    question: "Do you have support in my language?",
+    question: "Will my IPTV subscription work on Smart TV, Fire Stick and mobile?",
     answer:
-      "Yes, our support team is available 24/7 via chat and WhatsApp to help you with installation and any issue.",
+      "Yes. Our IPTV subscription service works on Smart TVs (Samsung, LG), Fire Stick, Android TV Box, MAG Box, Android and iOS phones, and PC or Mac.",
+  },
+  {
+    question: "Can I cancel my IPTV subscription whenever I want?",
+    answer:
+      "Yes, there's no long-term commitment. Choose the plan that fits you best (1, 3, 6 or 12 months) and it won't renew without your confirmation.",
+  },
+  {
+    question: "What picture quality do IPTV subscriptions include?",
+    answer:
+      "Every plan includes HD, Full HD and 4K channels, with servers built to keep playback smooth wherever you're watching from.",
+  },
+  {
+    question: "Do you offer support if something goes wrong?",
+    answer:
+      "Yes, our support team is available 24/7 by chat and WhatsApp to help with setup, installation or any issue with your subscription.",
   },
 ];

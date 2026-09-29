@@ -19,22 +19,22 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "IPTV Subscription | Thousands Of Channels In HD, Full HD & 4K",
+    default: "IPTV Subscription Service | Free Trial & 4K Channels",
     template: "%s | IPTV Pro",
   },
   description:
-    "Get your IPTV subscription from $20/month. Over 18,500 live channels, sports, series and movies in HD, Full HD and 4K. Works on Smart TV, Fire Stick, mobile and PC. Free trial available.",
+    "Buy an IPTV subscription with a free trial and instant activation. Stream 18,500+ live channels, sports, series and movies in HD, Full HD and 4K on any device, from $20 a month.",
   keywords: [
-    "IPTV subscription",
-    "buy IPTV",
-    "IPTV premium",
-    "IPTV list",
-    "IPTV 4K",
-    "best IPTV",
-    "live IPTV channels",
-    "IPTV Smart TV",
-    "IPTV no buffering",
-    "IPTV service",
+    "iptv subscription",
+    "iptv subscription service",
+    "iptv subscriptions",
+    "buy iptv subscription",
+    "iptv free trial",
+    "iptv subscription usa",
+    "iptv subscription canada",
+    "iptv subscription uk",
+    "iptv with subscription",
+    "best iptv subscription",
   ],
   authors: [{ name: siteName }],
   creator: siteName,
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName,
-    title: "IPTV Subscription | Thousands Of Channels In HD, Full HD & 4K",
+    title: "IPTV Subscription Service | Free Trial & 4K Channels",
     description:
-      "Over 18,500 live channels, series and movies. Works on every device. Free trial available.",
+      "Stream 18,500+ live channels, sports, series and movies in HD, Full HD and 4K on any device. Start with a free trial.",
     images: [
       {
         url: "/hero-smart-tv.webp",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPTV Subscription | Thousands Of Channels In HD, Full HD & 4K",
+    title: "IPTV Subscription Service | Free Trial & 4K Channels",
     description:
-      "Over 18,500 live channels, series and movies. Free trial available.",
+      "Stream 18,500+ live channels, sports, series and movies in HD, Full HD and 4K. Start with a free trial.",
     images: ["/hero-smart-tv.webp"],
   },
   robots: {

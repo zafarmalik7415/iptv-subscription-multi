@@ -3,7 +3,7 @@ import type { PricingContent } from "@/lib/sanity/types";
 const DEFAULT_CONTENT: PricingContent = {
   heading: "IPTV Subscription Plans For Every Need",
   subheading:
-    "Pay once per term. No contract and no hidden fees. Every plan includes +18,500 channels, every device and 24/7 support.",
+    "Pay once per term with no contract and no hidden fees. Every plan includes +18,500 channels, every device and 24/7 support, so you know exactly what you're getting before you buy.",
   commonFeatures: [
     "+18,500 channels",
     "4K Ultra HD",

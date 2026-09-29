@@ -18,7 +18,7 @@ const sections = [
   },
   {
     title: "2. Your account & credentials",
-    body: "After purchase you'll receive login credentials (or an M3U link) by email or WhatsApp. Keep these private — sharing your credentials outside your own household may result in suspension without refund. You're responsible for all activity under your account.",
+    body: "After purchase you'll receive login credentials (or an M3U link) by email or WhatsApp. Keep these private. Sharing your credentials outside your own household may result in suspension without refund. You're responsible for all activity under your account.",
   },
   {
     title: "3. Payment, plans & renewals",
@@ -26,7 +26,7 @@ const sections = [
   },
   {
     title: "4. Cancellations & refunds",
-    body: "There is no long-term contract — you can choose not to renew at any time. Because activation is instant and credentials are delivered digitally, purchases are generally non-refundable once access has been granted, except where the service was not delivered or is materially faulty. Contact support and we'll do our best to make it right.",
+    body: "There is no long-term contract, so you can choose not to renew at any time. Because activation is instant and credentials are delivered digitally, purchases are generally non-refundable once access has been granted, except where the service was not delivered or is materially faulty. Contact support and we'll do our best to make it right.",
   },
   {
     title: "5. Acceptable use",

@@ -11,9 +11,9 @@ import {
 } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "IPTV Installation Guide",
+  title: "IPTV Installation Guide: Set Up In 6 Minutes",
   description:
-    "Install your IPTV subscription on Amazon Firestick, Android TV, iPhone, Samsung, LG and more. Step-by-step guide, ready in under 6 minutes.",
+    "Install your IPTV subscription on Amazon Firestick, Android TV, iPhone, Samsung, LG and more. Follow our simple guide and start watching in under 6 minutes.",
   alternates: {
     canonical: "/installation-guide/",
   },

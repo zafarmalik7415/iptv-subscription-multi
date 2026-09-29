@@ -19,7 +19,7 @@ export default defineType({
     defineField({ name: "quote", title: "Quote", type: "text", rows: 4, validation: (r) => r.required() }),
     defineField({
       name: "rating",
-      title: "Rating (1–5)",
+      title: "Rating (1 to 5)",
       type: "number",
       initialValue: 5,
       validation: (r) => r.min(1).max(5).integer(),

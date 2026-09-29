@@ -7,9 +7,9 @@ import CountryFlag from "@/components/CountryFlag";
 import { getCountries } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Countries Available",
+  title: "IPTV Subscription Available Worldwide",
   description:
-    "See which countries our IPTV subscription is available in: premium live streaming, series and movies in HD, Full HD and 4K.",
+    "Find an IPTV subscription for the USA, Canada, the UK and more. Premium live channels, series and movies in HD, Full HD and 4K everywhere we operate.",
   alternates: {
     canonical: "/countries/",
   },

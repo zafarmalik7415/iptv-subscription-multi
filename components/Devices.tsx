@@ -22,8 +22,8 @@ export default function Devices({
             Compatible With All Your Devices
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-400">
-            Install your IPTV list in seconds and start enjoying it on every
-            screen in your home.
+            Get IPTV with a subscription that works on every screen in your
+            home, from your Smart TV to your phone.
           </p>
         </div>
 

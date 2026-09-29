@@ -35,13 +35,13 @@ export default defineType({
       group: "hero",
       fields: [
         { name: "badge", title: "Badge text", type: "string" },
-        { name: "titleLead", title: "Title — lead", type: "string" },
+        { name: "titleLead", title: "Title (lead)", type: "string" },
         {
           name: "titleAccent",
-          title: "Title — accent (coloured)",
+          title: "Title (accent, coloured)",
           type: "string",
         },
-        { name: "titleTail", title: "Title — tail", type: "string" },
+        { name: "titleTail", title: "Title (tail)", type: "string" },
         { name: "paragraph", title: "Paragraph", type: "text", rows: 4 },
         ctaField("primaryCta", "Primary button"),
         ctaField("secondaryCta", "Secondary button"),

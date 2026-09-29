@@ -87,7 +87,7 @@ export const countries: Country[] = [
     demonym: "American",
     code: "US",
     cities: "New York, Los Angeles and Miami",
-    description: "Premium live TV and VOD streaming for viewers across the United States.",
+    description: "Premium IPTV subscription with live TV and VOD streaming for viewers across the USA.",
     region: "Americas",
   },
   {
@@ -96,7 +96,7 @@ export const countries: Country[] = [
     demonym: "Canadian",
     code: "CA",
     cities: "Toronto and Vancouver",
-    description: "High-quality streaming with low latency for Toronto, Vancouver and all of Canada.",
+    description: "High-quality IPTV subscription with low latency streaming for Toronto, Vancouver and all of Canada.",
     region: "Americas",
   },
   {
@@ -157,4 +157,15 @@ export const countries: Country[] = [
 
 export function getCountry(slug: string) {
   return countries.find((c) => c.slug === slug);
+}
+
+const shortNames: Record<string, string> = {
+  "iptv-subscription-uk": "the UK",
+  "iptv-subscription-usa": "the USA",
+  "iptv-subscription-uae": "the UAE",
+};
+
+/** Search-friendly place name for titles and headings, e.g. "the UK" instead of "United Kingdom". */
+export function getCountryPlaceName(country: { slug: string; name: string }) {
+  return shortNames[country.slug] ?? country.name;
 }

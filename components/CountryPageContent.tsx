@@ -2,7 +2,7 @@ import Link from "next/link";
 import Pricing from "@/components/Pricing";
 import Devices from "@/components/Devices";
 import CountryFlag from "@/components/CountryFlag";
-import { countries as staticCountries } from "@/lib/countries";
+import { countries as staticCountries, getCountryPlaceName } from "@/lib/countries";
 import type { Country } from "@/lib/sanity/types";
 
 const whatsappNumber = "447362244111";
@@ -34,14 +34,19 @@ const features = [
   },
 ];
 
-function faqsFor(country: Country) {
+function faqsFor(country: Country, place: string) {
   return [
     {
-      question: `Does the IPTV subscription work well in ${country.name}?`,
-      answer: `Yes. Our service works across ${country.name}, including cities like ${country.cities}, with servers optimized to deliver stable playback in HD, Full HD and 4K.`,
+      question: `Is IPTV legal in ${place}?`,
+      answer:
+        "IPTV as a technology is legal. It's the same method of delivery used by services like Netflix. What matters is the provider behind it, so always choose one that's clear about what it offers.",
     },
     {
-      question: `Do I need a VPN to use the service in ${country.name}?`,
+      question: `Does the IPTV subscription work well in ${place}?`,
+      answer: `Yes. Our service works across ${place}, including cities like ${country.cities}, with servers optimized to deliver stable playback in HD, Full HD and 4K.`,
+    },
+    {
+      question: `Do I need a VPN to use IPTV in ${place}?`,
       answer:
         "Not in most cases. Our platform is built to work directly with your regular internet connection.",
     },
@@ -51,7 +56,7 @@ function faqsFor(country: Country) {
         "It depends on your plan: from 1 simultaneous connection on the monthly plan up to 4 on the annual plan.",
     },
     {
-      question: "Can I try the service before committing to a longer plan?",
+      question: "Can I try an IPTV free trial before committing to a longer plan?",
       answer:
         "Yes, message us on WhatsApp and we'll walk you through activating your subscription and watching channels within minutes.",
     },
@@ -66,7 +71,8 @@ export default function CountryPageContent({
   countries?: Country[];
 }) {
   const otherCountries = countries.filter((c) => c.slug !== country.slug);
-  const faqs = faqsFor(country);
+  const place = getCountryPlaceName(country);
+  const faqs = faqsFor(country, place);
 
   return (
     <main className="flex-1">
@@ -82,14 +88,14 @@ export default function CountryPageContent({
             Available in {country.name}
           </p>
           <h1 className="font-[family-name:var(--font-poppins)] text-4xl font-extrabold leading-[1.15] text-white sm:text-5xl">
-            IPTV Subscription In{" "}
-            <span className="text-gradient">{country.name}</span>
+            Buy An IPTV Subscription In{" "}
+            <span className="text-gradient">{place}</span>
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-slate-300">
             Premium live streaming for {country.demonym} customers in{" "}
             {country.cities} and across the rest of the country. Thousands of
             channels, series and movies in HD, Full HD and 4K, with instant
-            activation and 24/7 support.
+            activation, a free trial and 24/7 support.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
@@ -100,7 +106,7 @@ export default function CountryPageContent({
             </a>
             <a
               href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-                `Hi, I'd like information about the IPTV subscription in ${country.name}`
+                `Hi, I'd like information about the IPTV subscription in ${place}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -117,7 +123,7 @@ export default function CountryPageContent({
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-white sm:text-4xl">
               Why Choose Our IPTV Subscription In{" "}
-              <span className="text-gradient">{country.name}</span>?
+              <span className="text-gradient">{place}</span>?
             </h2>
           </div>
 
@@ -144,7 +150,7 @@ export default function CountryPageContent({
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
             <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-white sm:text-4xl">
-              Frequently Asked Questions — {country.name}
+              Frequently Asked Questions About IPTV In {place}
             </h2>
           </div>
 
@@ -164,7 +170,7 @@ export default function CountryPageContent({
       <section className="px-6 pb-16">
         <div className="glow relative mx-auto max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-500/20 via-indigo-500/20 to-pink-500/20 p-10 text-center sm:p-14">
           <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-white sm:text-3xl">
-            Start Watching IPTV In {country.name} Today
+            Start Watching IPTV In {place} Today
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate-300">
             Instant activation, no contract, and 24/7 support. Message us on

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "1. Information we collect",
-    body: "When you contact us or subscribe, we collect the details you provide directly — such as your name, email address and WhatsApp number — plus basic technical information (like device type and IP address) needed to deliver and troubleshoot the service.",
+    body: "When you contact us or subscribe, we collect the details you provide directly, such as your name, email address and WhatsApp number, plus basic technical information (like device type and IP address) needed to deliver and troubleshoot the service.",
   },
   {
     title: "2. How we use your information",

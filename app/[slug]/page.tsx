@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CountryPageContent from "@/components/CountryPageContent";
 import { getCountries, getCountryBySlug, getPostSlugs } from "@/lib/content";
+import { getCountryPlaceName } from "@/lib/countries";
 
 export async function generateStaticParams() {
   const countries = await getCountries();
@@ -20,8 +21,9 @@ export async function generateMetadata({
   const country = await getCountryBySlug(slug);
   if (!country) return {};
 
-  const title = `IPTV Subscription in ${country.name}`;
-  const description = `Get your IPTV subscription in ${country.name}. Thousands of live channels, series and movies in HD, Full HD and 4K, with instant activation and 24/7 support.`;
+  const place = getCountryPlaceName(country);
+  const title = `Buy IPTV Subscription in ${place}`;
+  const description = `Buy an IPTV subscription in ${place} with instant activation and a free trial. Stream 18,500+ live channels, series and movies in HD, Full HD and 4K.`;
 
   return {
     title,
