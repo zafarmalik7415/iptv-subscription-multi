@@ -130,4 +130,5 @@ export type BlogPost = BlogPostSummary & {
   seoTitle: string | null;
   seoDescription: string | null;
   faqs?: Faq[];
+  keyTakeaway?: string;
 };

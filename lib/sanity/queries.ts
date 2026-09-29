@@ -121,5 +121,6 @@ export const postBySlugQuery = `*[_type == "post" && slug.current == $slug][0]{
   "body": coalesce(body, []),
   "seoTitle": seo.title,
   "seoDescription": seo.description,
-  faqs
+  faqs,
+  keyTakeaway
 }`;

@@ -22,6 +22,8 @@ const posts: StaticPost[] = [
     seoTitle: "What Is an IPTV Portal URL? Setup Guide",
     seoDescription:
       "Learn what an IPTV portal URL is, how it differs from an M3U link, and how to fix the most common connection errors when setting up a new device.",
+    keyTakeaway:
+      "A portal URL is just the server address for your IPTV subscription. Paired with a username and password, it's what a player app like IPTV Smarters Pro or TiviMate needs to load your channels. An M3U link is the same three details bundled into one link instead.",
     faqs: [
       {
         question: "What is a portal URL in IPTV?",
@@ -164,6 +166,8 @@ const posts: StaticPost[] = [
     seoTitle: "Is IPTV Legal in the USA? Full Explanation",
     seoDescription:
       "Is IPTV legal in the United States? Here's what the DMCA and FCC actually say, why some providers get shut down, and how to spot a legitimate service.",
+    keyTakeaway:
+      "IPTV itself is legal in the US, it's just a delivery method, the same one Netflix and YouTube TV use. What matters is whether the specific provider actually holds the rights to the channels it sells. Realistic pricing and clear business information are the fastest way to tell a legitimate service from one that isn't.",
     faqs: [
       {
         question: "Is IPTV illegal in the US?",
@@ -280,6 +284,8 @@ const posts: StaticPost[] = [
     seoTitle: "Best IPTV Players 2026: Which App to Use",
     seoDescription:
       "A plain-English comparison of the best IPTV player apps, including IPTV Smarters Pro, TiviMate, GSE and Smart IPTV, and which one fits your device.",
+    keyTakeaway:
+      "IPTV Smarters Pro is the best all-round free pick since it runs on nearly every device with one login. TiviMate is better on Android TV and Fire Stick specifically. VLC works everywhere but has no channel guide. Pick based on your device first, not a single \"best\" app.",
     faqs: [
       {
         question: "What is the best free IPTV player?",

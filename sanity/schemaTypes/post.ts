@@ -63,6 +63,15 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
+      name: "keyTakeaway",
+      title: "Key takeaway",
+      description: "Short summary shown in a callout box near the top of the post.",
+      type: "text",
+      rows: 3,
+      group: "content",
+      validation: (r) => r.max(400),
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "blockContent",

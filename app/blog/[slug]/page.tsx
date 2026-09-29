@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import PortableText from "@/components/PortableText";
 import BlogFaq from "@/components/BlogFaq";
+import ReadingProgress from "@/components/ReadingProgress";
+import ArticleSidebar from "@/components/ArticleSidebar";
+import BackToTop from "@/components/BackToTop";
 import { getCountries, getPostBySlug, getPostSlugs, getPosts } from "@/lib/content";
 import { getHeadings, getReadingTime } from "@/lib/blogUtils";
 import { siteUrl } from "@/lib/site";
@@ -54,6 +57,35 @@ function CoverImage({ src, alt }: { src: string; alt: string }) {
   return <img src={src} alt={alt} className="h-auto w-full" />;
 }
 
+function CalendarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
+      <path
+        d="M7 3v3M17 3v3M4 9h16M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
+      <circle cx="12" cy="12" r="8.25" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M12 7.5V12l3 2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -74,6 +106,7 @@ export default async function BlogPostPage({
   const readingTime = getReadingTime(post.body);
   const faqs = post.faqs ?? [];
   const related = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const articleId = "article-content";
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -115,6 +148,7 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
+      <ReadingProgress targetId={articleId} />
       <Header countries={countries} />
       <main className="flex-1">
         <section className="relative overflow-hidden px-6 pt-16 pb-10 sm:pt-20">
@@ -145,11 +179,31 @@ export default async function BlogPostPage({
               {post.title}
             </h1>
 
-            <p className="mt-4 text-sm text-slate-500">
-              {[post.author?.name, formatDate(post.publishedAt), `${readingTime} min read`]
-                .filter(Boolean)
-                .join(" · ")}
-            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+              {post.author?.name && (
+                <span className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500 text-[10px] font-semibold text-white">
+                    {post.author.name
+                      .split(" ")
+                      .slice(0, 2)
+                      .map((w) => w[0])
+                      .join("")
+                      .toUpperCase()}
+                  </span>
+                  {post.author.name}
+                </span>
+              )}
+              {post.publishedAt && (
+                <span className="flex items-center gap-1.5">
+                  <CalendarIcon />
+                  {formatDate(post.publishedAt)}
+                </span>
+              )}
+              <span className="flex items-center gap-1.5">
+                <ClockIcon />
+                {readingTime} min read
+              </span>
+            </div>
           </div>
         </section>
 
@@ -161,69 +215,91 @@ export default async function BlogPostPage({
           </div>
         )}
 
-        <div className="mx-auto max-w-3xl px-6 py-12">
-          {headings.length > 0 && (
-            <nav className="glass mb-10 rounded-2xl p-6" aria-label="Table of contents">
-              <p className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                In this guide
-              </p>
-              <ol className="mt-3 space-y-2">
-                {headings.map((heading) => (
-                  <li key={heading.id}>
-                    <a
-                      href={`#${heading.id}`}
-                      className="text-sm text-slate-300 transition hover:text-cyan-300"
-                    >
-                      {heading.text}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </nav>
-          )}
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-12 lg:grid-cols-[1fr_260px]">
+          <div className="min-w-0">
+            {headings.length > 0 && (
+              <nav
+                className="glass mb-10 rounded-2xl p-6 lg:hidden"
+                aria-label="Table of contents"
+              >
+                <p className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                  In this guide
+                </p>
+                <ol className="mt-3 space-y-2">
+                  {headings.map((heading) => (
+                    <li key={heading.id}>
+                      <a
+                        href={`#${heading.id}`}
+                        className="text-sm text-slate-300 transition hover:text-cyan-300"
+                      >
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
 
-          <article>
-            <PortableText value={post.body} />
-          </article>
-
-          {faqs.length > 0 && (
-            <section className="mt-16">
-              <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-white sm:text-3xl">
-                Frequently Asked Questions
-              </h2>
-              <BlogFaq faqs={faqs} />
-            </section>
-          )}
-
-          {related.length > 0 && (
-            <section className="mt-16 border-t border-white/10 pt-10">
-              <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white">
-                Related guides
-              </h2>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                {related.map((p) => (
-                  <Link
-                    key={p.slug}
-                    href={`/blog/${p.slug}/`}
-                    className="glass rounded-2xl p-5 transition hover:border-cyan-400/30"
-                  >
-                    <span className="block text-sm font-semibold leading-snug text-white">
-                      {p.title}
-                    </span>
-                    {p.excerpt && (
-                      <span className="mt-2 block text-sm leading-relaxed text-slate-400">
-                        {p.excerpt}
-                      </span>
-                    )}
-                  </Link>
-                ))}
+            {post.keyTakeaway && (
+              <div className="glow mb-10 rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-cyan-500/10 via-indigo-500/5 to-transparent p-6">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                  Key takeaway
+                </p>
+                <p className="mt-2 text-base leading-relaxed text-slate-200">
+                  {post.keyTakeaway}
+                </p>
               </div>
-            </section>
-          )}
+            )}
+
+            <article id={articleId}>
+              <PortableText value={post.body} />
+            </article>
+
+            {faqs.length > 0 && (
+              <section className="mt-16">
+                <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-white sm:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+                <BlogFaq faqs={faqs} />
+              </section>
+            )}
+
+            {related.length > 0 && (
+              <section className="mt-16 border-t border-white/10 pt-10">
+                <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white">
+                  Related guides
+                </h2>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  {related.map((p) => (
+                    <Link
+                      key={p.slug}
+                      href={`/blog/${p.slug}/`}
+                      className="glass rounded-2xl p-5 transition hover:border-cyan-400/30"
+                    >
+                      <span className="block text-sm font-semibold leading-snug text-white">
+                        {p.title}
+                      </span>
+                      {p.excerpt && (
+                        <span className="mt-2 block text-sm leading-relaxed text-slate-400">
+                          {p.excerpt}
+                        </span>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+
+          <aside className="hidden lg:block">
+            <ArticleSidebar headings={headings} title={post.title} />
+          </aside>
         </div>
       </main>
       <Footer countries={countries} />
       <WhatsAppButton />
+      <BackToTop />
     </>
   );
 }
