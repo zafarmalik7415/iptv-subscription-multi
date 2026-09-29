@@ -251,9 +251,11 @@ const posts: StaticPost[] = [
       p(
         "For most individual subscribers, the practical risk isn't a lawsuit, it's disruption. Illegal IPTV operations get shut down fairly often, sometimes overnight, which means you lose access with no warning and, almost always, no refund. Because these services often change servers, domains and payment methods to stay ahead of enforcement, quality and reliability tend to be inconsistent even while they're still running. If you want a service you can actually rely on month to month, that stability matters just as much as the price."
       ),
-      p(
-        "There's also a simple cost comparison worth making. A legitimate IPTV subscription in the US typically runs somewhere between $15 and $25 a month, which is already well below the average cable bill. A provider promising the same channel count for a fraction of that price isn't just being generous. Content licensing has a real cost, and a price that low usually means that cost was skipped entirely rather than passed on to you as a discount."
-      ),
+      p([
+        "There's also a simple cost comparison worth making. A legitimate ",
+        { text: "IPTV subscription", href: "/" },
+        " in the US typically runs somewhere between $15 and $25 a month, which is already well below the average cable bill. A provider promising the same channel count for a fraction of that price isn't just being generous. Content licensing has a real cost, and a price that low usually means that cost was skipped entirely rather than passed on to you as a discount.",
+      ]),
 
       h2("Does this apply outside the US too"),
       p([
