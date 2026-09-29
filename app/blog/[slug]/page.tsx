@@ -262,18 +262,6 @@ export default async function BlogPostPage({
               </nav>
             )}
 
-            {post.keyTakeaway && (
-              <div className="glow mb-10 rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-cyan-500/10 via-indigo-500/5 to-transparent p-6">
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                  Key takeaway
-                </p>
-                <p className="mt-2 text-base leading-relaxed text-slate-200">
-                  {post.keyTakeaway}
-                </p>
-              </div>
-            )}
-
             <article id={articleId}>
               <PortableText value={post.body} />
             </article>
