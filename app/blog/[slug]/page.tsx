@@ -52,9 +52,23 @@ function formatDate(value: string | null) {
   });
 }
 
-function CoverImage({ src, alt }: { src: string; alt: string }) {
+function CoverImage({
+  src,
+  alt,
+  fill,
+}: {
+  src: string;
+  alt: string;
+  fill?: boolean;
+}) {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} alt={alt} className="h-auto w-full" />;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={fill ? "absolute inset-0 h-full w-full object-cover" : "h-auto w-full"}
+    />
+  );
 }
 
 function CalendarIcon() {
@@ -156,7 +170,7 @@ export default async function BlogPostPage({
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(34,211,238,0.14),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(129,140,248,0.14),transparent_40%)]"
           />
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-6xl">
             <Link
               href="/blog/"
               className="text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
@@ -164,56 +178,64 @@ export default async function BlogPostPage({
               ← Back to blog
             </Link>
 
-            <div className="mt-6 flex flex-wrap items-center gap-2">
-              {post.categories.map((category) => (
-                <span
-                  key={category.slug}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300"
-                >
-                  {category.title}
-                </span>
-              ))}
-            </div>
+            <div className="glow mt-6 grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] lg:grid-cols-2">
+              <div className="flex flex-col justify-center p-8 sm:p-10">
+                <div className="flex flex-wrap items-center gap-2">
+                  {post.categories.map((category) => (
+                    <span
+                      key={category.slug}
+                      className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300"
+                    >
+                      {category.title}
+                    </span>
+                  ))}
+                </div>
 
-            <h1 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-              {post.title}
-            </h1>
+                <h1 className="mt-4 font-[family-name:var(--font-poppins)] text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+                  {post.title}
+                </h1>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
-              {post.author?.name && (
-                <span className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500 text-[10px] font-semibold text-white">
-                    {post.author.name
-                      .split(" ")
-                      .slice(0, 2)
-                      .map((w) => w[0])
-                      .join("")
-                      .toUpperCase()}
+                {post.excerpt && (
+                  <p className="mt-4 text-base leading-relaxed text-slate-400">
+                    {post.excerpt}
+                  </p>
+                )}
+
+                <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+                  {post.author?.name && (
+                    <span className="flex items-center gap-2">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500 text-[10px] font-semibold text-white">
+                        {post.author.name
+                          .split(" ")
+                          .slice(0, 2)
+                          .map((w) => w[0])
+                          .join("")
+                          .toUpperCase()}
+                      </span>
+                      {post.author.name}
+                    </span>
+                  )}
+                  {post.publishedAt && (
+                    <span className="flex items-center gap-1.5">
+                      <CalendarIcon />
+                      {formatDate(post.publishedAt)}
+                    </span>
+                  )}
+                  <span className="flex items-center gap-1.5">
+                    <ClockIcon />
+                    {readingTime} min read
                   </span>
-                  {post.author.name}
-                </span>
+                </div>
+              </div>
+
+              {post.mainImageUrl && (
+                <div className="relative min-h-[260px] lg:min-h-0">
+                  <CoverImage src={post.mainImageUrl} alt={post.title} fill />
+                </div>
               )}
-              {post.publishedAt && (
-                <span className="flex items-center gap-1.5">
-                  <CalendarIcon />
-                  {formatDate(post.publishedAt)}
-                </span>
-              )}
-              <span className="flex items-center gap-1.5">
-                <ClockIcon />
-                {readingTime} min read
-              </span>
             </div>
           </div>
         </section>
-
-        {post.mainImageUrl && (
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="glow overflow-hidden rounded-3xl border border-white/10">
-              <CoverImage src={post.mainImageUrl} alt={post.title} />
-            </div>
-          </div>
-        )}
 
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-12 lg:grid-cols-[1fr_260px]">
           <div className="min-w-0">
