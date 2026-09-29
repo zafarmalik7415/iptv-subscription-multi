@@ -274,7 +274,7 @@ const posts: StaticPost[] = [
     excerpt:
       "Your subscription is only half the setup. Here's a plain look at IPTV Smarters Pro, TiviMate, GSE, Smart IPTV and VLC, and which one fits your device.",
     publishedAt: "2026-08-28",
-    mainImageUrl: "/blog/best-iptv-players-cover.svg",
+    mainImageUrl: "/blog/best-iptv-players-cover.webp",
     author,
     categories: [{ title: "Devices", slug: "devices" }],
     seoTitle: "Best IPTV Players 2026: Which App to Use",
