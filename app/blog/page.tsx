@@ -79,10 +79,6 @@ export default async function BlogPage() {
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.15),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(129,140,248,0.18),transparent_40%)]"
           />
           <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-cyan-300">
-              <span className="h-2 w-2 rounded-full bg-cyan-400" />
-              The blog
-            </p>
             <h1 className="font-[family-name:var(--font-poppins)] text-4xl font-extrabold text-white sm:text-5xl">
               Guides For Getting The Most Out Of{" "}
               <span className="text-gradient">IPTV</span>
