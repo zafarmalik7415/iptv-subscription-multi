@@ -1,6 +1,6 @@
 import type { Testimonial } from "@/lib/sanity/types";
 
-const DEFAULT_TESTIMONIALS: Testimonial[] = [
+export const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
     name: "Carl M.",
     location: "London",
