@@ -5,6 +5,11 @@
  * `lib/sanity/*` directly.
  */
 
+import {
+  getStaticPostBySlug,
+  getStaticPosts,
+  getStaticPostSlugs,
+} from "@/lib/blog";
 import { countries as staticCountries } from "@/lib/countries";
 import { faqs as staticFaqs } from "@/lib/faqs";
 import {
@@ -145,17 +150,18 @@ export async function getCountryBySlug(slug: string): Promise<Country | undefine
 
 export async function getPosts(): Promise<BlogPostSummary[]> {
   const data = await sanityFetch<BlogPostSummary[]>(postsQuery, { tags: ["post"] });
-  return nonEmpty(data) ? data : [];
+  return nonEmpty(data) ? data : getStaticPosts();
 }
 
 export async function getPostSlugs(): Promise<string[]> {
   const data = await sanityFetch<string[]>(postSlugsQuery, { tags: ["post"] });
-  return nonEmpty(data) ? data : [];
+  return nonEmpty(data) ? data : getStaticPostSlugs();
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  return sanityFetch<BlogPost>(postBySlugQuery, {
+  const data = await sanityFetch<BlogPost>(postBySlugQuery, {
     params: { slug },
     tags: ["post"],
   });
+  return data ?? getStaticPostBySlug(slug);
 }

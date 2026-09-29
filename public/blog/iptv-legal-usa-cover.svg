@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="55%" stop-color="#131c31" />
+      <stop offset="100%" stop-color="#1c1533" />
+    </linearGradient>
+    <linearGradient id="accent2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#f472b6" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg2)" />
+  <circle cx="200" cy="140" r="240" fill="url(#accent2)" opacity="0.12" />
+  <circle cx="1040" cy="520" r="260" fill="url(#accent2)" opacity="0.1" />
+
+  <g transform="translate(490,140)">
+    <path d="M110 0 L220 40 V150 C220 230 170 285 110 320 C50 285 0 230 0 150 V40 Z"
+      fill="#ffffff" fill-opacity="0.05" stroke="url(#accent2)" stroke-width="3" />
+    <path d="M60 165 L95 200 L165 120" fill="none" stroke="url(#accent2)" stroke-width="12"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <g fill="#ffffff" fill-opacity="0.35" font-family="Arial, sans-serif" font-weight="700">
+    <text x="600" y="500" font-size="26" text-anchor="middle" letter-spacing="6">UNITED STATES</text>
+  </g>
+</svg>

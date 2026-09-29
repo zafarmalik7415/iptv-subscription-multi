@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -98,6 +99,38 @@ export default async function InstallationGuidePage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 py-12">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white">
+              Related Reading
+            </h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <Link
+                href="/blog/what-is-an-iptv-portal-url/"
+                className="glass rounded-2xl p-5 transition hover:border-cyan-400/30"
+              >
+                <span className="block text-sm font-semibold text-white">
+                  What Is an IPTV Portal URL?
+                </span>
+                <span className="mt-1 block text-sm text-slate-400">
+                  A plain-English breakdown of server URLs, M3U links and login errors.
+                </span>
+              </Link>
+              <Link
+                href="/blog/best-iptv-players/"
+                className="glass rounded-2xl p-5 transition hover:border-cyan-400/30"
+              >
+                <span className="block text-sm font-semibold text-white">
+                  The Best IPTV Players in 2026
+                </span>
+                <span className="mt-1 block text-sm text-slate-400">
+                  Which app to use on Fire Stick, Android TV, iPhone and Smart TV.
+                </span>
+              </Link>
             </div>
           </div>
         </section>

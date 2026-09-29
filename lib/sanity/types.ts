@@ -129,4 +129,5 @@ export type BlogPost = BlogPostSummary & {
   body: PortableTextBlock[];
   seoTitle: string | null;
   seoDescription: string | null;
+  faqs?: Faq[];
 };

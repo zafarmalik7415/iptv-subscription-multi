@@ -69,6 +69,23 @@ export default defineType({
       group: "content",
     }),
     defineField({
+      name: "faqs",
+      title: "FAQs",
+      description: "Shown at the end of the post and included as FAQPage structured data.",
+      type: "array",
+      group: "content",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "question", title: "Question", type: "string", validation: (r) => r.required() },
+            { name: "answer", title: "Answer", type: "text", rows: 3, validation: (r) => r.required() },
+          ],
+          preview: { select: { title: "question" } },
+        },
+      ],
+    }),
+    defineField({
       name: "seo",
       title: "SEO",
       type: "object",

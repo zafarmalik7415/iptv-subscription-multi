@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import PortableText from "@/components/PortableText";
-import { getCountries, getPostBySlug, getPostSlugs } from "@/lib/content";
+import BlogFaq from "@/components/BlogFaq";
+import { getCountries, getPostBySlug, getPostSlugs, getPosts } from "@/lib/content";
+import { getHeadings, getReadingTime } from "@/lib/blogUtils";
+import { siteUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
@@ -47,32 +49,59 @@ function formatDate(value: string | null) {
   });
 }
 
+function CoverImage({ src, alt }: { src: string; alt: string }) {
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={src} alt={alt} className="h-auto w-full" />;
+}
+
 export default async function BlogPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [post, countries] = await Promise.all([
+  const [post, countries, allPosts] = await Promise.all([
     getPostBySlug(slug),
     getCountries(),
+    getPosts(),
   ]);
 
   if (!post) {
     notFound();
   }
 
+  const headings = getHeadings(post.body);
+  const readingTime = getReadingTime(post.body);
+  const faqs = post.faqs ?? [];
+  const related = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt || undefined,
-    image: post.mainImageUrl || undefined,
+    image: post.mainImageUrl
+      ? `${siteUrl}${post.mainImageUrl.startsWith("/") ? "" : "/"}${post.mainImageUrl}`
+      : undefined,
     datePublished: post.publishedAt || undefined,
     author: post.author?.name
-      ? { "@type": "Person", name: post.author.name }
+      ? { "@type": "Organization", name: post.author.name }
       : undefined,
+    mainEntityOfPage: `${siteUrl}/blog/${post.slug}/`,
   };
+
+  const faqJsonLd =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -80,54 +109,118 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Header countries={countries} />
-      <main className="flex-1 px-6 py-20">
-        <article className="mx-auto max-w-3xl">
-          <Link
-            href="/blog/"
-            className="text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
-          >
-            ← Back to blog
-          </Link>
+      <main className="flex-1">
+        <section className="relative overflow-hidden px-6 pt-16 pb-10 sm:pt-20">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(34,211,238,0.14),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(129,140,248,0.14),transparent_40%)]"
+          />
+          <div className="mx-auto max-w-3xl">
+            <Link
+              href="/blog/"
+              className="text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
+            >
+              ← Back to blog
+            </Link>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {post.categories.map((category) => (
-              <span
-                key={category.slug}
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300"
-              >
-                {category.title}
-              </span>
-            ))}
-          </div>
-
-          <h1 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-            {post.title}
-          </h1>
-
-          <p className="mt-4 text-sm text-slate-500">
-            {[post.author?.name, formatDate(post.publishedAt)]
-              .filter(Boolean)
-              .join(" · ")}
-          </p>
-
-          {post.mainImageUrl && (
-            <div className="mt-8 overflow-hidden rounded-3xl border border-white/10">
-              <Image
-                src={post.mainImageUrl}
-                alt={post.title}
-                width={1200}
-                height={675}
-                priority
-                className="h-auto w-full"
-              />
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              {post.categories.map((category) => (
+                <span
+                  key={category.slug}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300"
+                >
+                  {category.title}
+                </span>
+              ))}
             </div>
+
+            <h1 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+              {post.title}
+            </h1>
+
+            <p className="mt-4 text-sm text-slate-500">
+              {[post.author?.name, formatDate(post.publishedAt), `${readingTime} min read`]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          </div>
+        </section>
+
+        {post.mainImageUrl && (
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="glow overflow-hidden rounded-3xl border border-white/10">
+              <CoverImage src={post.mainImageUrl} alt={post.title} />
+            </div>
+          </div>
+        )}
+
+        <div className="mx-auto max-w-3xl px-6 py-12">
+          {headings.length > 0 && (
+            <nav className="glass mb-10 rounded-2xl p-6" aria-label="Table of contents">
+              <p className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                In this guide
+              </p>
+              <ol className="mt-3 space-y-2">
+                {headings.map((heading) => (
+                  <li key={heading.id}>
+                    <a
+                      href={`#${heading.id}`}
+                      className="text-sm text-slate-300 transition hover:text-cyan-300"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
           )}
 
-          <div className="mt-8">
+          <article>
             <PortableText value={post.body} />
-          </div>
-        </article>
+          </article>
+
+          {faqs.length > 0 && (
+            <section className="mt-16">
+              <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-white sm:text-3xl">
+                Frequently Asked Questions
+              </h2>
+              <BlogFaq faqs={faqs} />
+            </section>
+          )}
+
+          {related.length > 0 && (
+            <section className="mt-16 border-t border-white/10 pt-10">
+              <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white">
+                Related guides
+              </h2>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {related.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/blog/${p.slug}/`}
+                    className="glass rounded-2xl p-5 transition hover:border-cyan-400/30"
+                  >
+                    <span className="block text-sm font-semibold leading-snug text-white">
+                      {p.title}
+                    </span>
+                    {p.excerpt && (
+                      <span className="mt-2 block text-sm leading-relaxed text-slate-400">
+                        {p.excerpt}
+                      </span>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       </main>
       <Footer countries={countries} />
       <WhatsAppButton />
