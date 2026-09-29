@@ -37,7 +37,7 @@ export default function HowItWorks({
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-white sm:text-4xl">
-            How To Get Your Subscription
+            How To Get an IPTV Subscription
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-400">
             No complicated sign-ups. You&apos;ll be watching your favorite
