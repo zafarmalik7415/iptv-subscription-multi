@@ -158,7 +158,7 @@ const posts: StaticPost[] = [
     excerpt:
       "IPTV isn't illegal by itself, but not every provider is above board. Here's what US law actually says, and how to spot a legitimate service.",
     publishedAt: "2026-08-21",
-    mainImageUrl: "/blog/iptv-legal-usa-cover.svg",
+    mainImageUrl: "/blog/iptv-legal-usa-cover.webp",
     author,
     categories: [{ title: "Guides", slug: "guides" }],
     seoTitle: "Is IPTV Legal in the USA? Full Explanation",
