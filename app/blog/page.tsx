@@ -13,31 +13,53 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog/" },
 };
 
+const categoryColors: Record<string, string> = {
+  setup: "bg-cyan-500",
+  guides: "bg-indigo-500",
+  devices: "bg-emerald-500",
+};
+
 function formatDate(value: string | null) {
   if (!value) return "";
   return new Date(value).toLocaleDateString("en-US", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
   });
 }
 
-function CoverImage({
-  src,
-  alt,
-  className,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-}) {
+function initials(name?: string | null) {
+  if (!name) return "IP";
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "")).toUpperCase();
+}
+
+function CoverImage({ src, alt }: { src: string; alt: string }) {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} alt={alt} className={className} />;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="h-full w-full object-cover transition group-hover:scale-105"
+    />
+  );
+}
+
+function BookmarkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
+      <path
+        d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.6L6 21z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 
 export default async function BlogPage() {
   const [posts, countries] = await Promise.all([getPosts(), getCountries()]);
-  const [featured, ...rest] = posts;
 
   const readingTimes = await Promise.all(
     posts.map(async (post) => {
@@ -78,82 +100,32 @@ export default async function BlogPage() {
           </p>
         ) : (
           <div className="mx-auto max-w-6xl px-6 pb-24">
-            {featured && (
-              <Link
-                href={`/blog/${featured.slug}/`}
-                className="glass group grid gap-0 overflow-hidden rounded-3xl transition hover:border-cyan-400/30 md:grid-cols-2"
-              >
-                {featured.mainImageUrl && (
-                  <span className="block aspect-[16/9] overflow-hidden md:aspect-auto">
-                    <CoverImage
-                      src={featured.mainImageUrl}
-                      alt={featured.title}
-                      className="h-full w-full object-cover transition group-hover:scale-105"
-                    />
-                  </span>
-                )}
-                <span className="flex flex-col justify-center p-8 sm:p-10">
-                  <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                    <span className="rounded-full bg-cyan-400/10 px-2.5 py-1">
-                      Latest
-                    </span>
-                    {featured.categories[0]?.title}
-                  </span>
-                  <span className="mt-3 block font-[family-name:var(--font-poppins)] text-2xl font-bold leading-snug text-white sm:text-3xl">
-                    {featured.title}
-                  </span>
-                  {featured.excerpt && (
-                    <span className="mt-3 block text-base leading-relaxed text-slate-400">
-                      {featured.excerpt}
-                    </span>
-                  )}
-                  <span className="mt-5 block text-xs text-slate-500">
-                    {[
-                      featured.author?.name,
-                      formatDate(featured.publishedAt),
-                      readingTimeBySlug[featured.slug]
-                        ? `${readingTimeBySlug[featured.slug]} min read`
-                        : null,
-                    ]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </span>
-                </span>
-              </Link>
-            )}
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => {
+                const categorySlug = post.categories[0]?.slug ?? "";
+                const badgeColor = categoryColors[categorySlug] ?? "bg-slate-500";
 
-            {rest.length > 0 && (
-              <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map((post) => (
+                return (
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}/`}
-                    className="glass group flex flex-col overflow-hidden rounded-2xl transition hover:border-cyan-400/30"
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition hover:-translate-y-1 hover:border-cyan-400/30"
                   >
                     {post.mainImageUrl && (
-                      <span className="block aspect-[16/9] overflow-hidden">
-                        <CoverImage
-                          src={post.mainImageUrl}
-                          alt={post.title}
-                          className="h-full w-full object-cover transition group-hover:scale-105"
-                        />
+                      <span className="relative block aspect-[16/9] overflow-hidden">
+                        <CoverImage src={post.mainImageUrl} alt={post.title} />
+                        {post.categories[0] && (
+                          <span
+                            className={`absolute left-3 top-3 rounded-full ${badgeColor} px-3 py-1 text-xs font-semibold text-white shadow-lg`}
+                          >
+                            {post.categories[0].title}
+                          </span>
+                        )}
                       </span>
                     )}
+
                     <span className="flex flex-1 flex-col p-6">
-                      {post.categories[0] && (
-                        <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                          {post.categories[0].title}
-                        </span>
-                      )}
-                      <span className="mt-2 block text-lg font-semibold leading-snug text-white">
-                        {post.title}
-                      </span>
-                      {post.excerpt && (
-                        <span className="mt-2 block flex-1 text-sm leading-relaxed text-slate-400">
-                          {post.excerpt}
-                        </span>
-                      )}
-                      <span className="mt-4 block text-xs text-slate-500">
+                      <span className="text-xs text-slate-500">
                         {[
                           formatDate(post.publishedAt),
                           readingTimeBySlug[post.slug]
@@ -163,11 +135,35 @@ export default async function BlogPage() {
                           .filter(Boolean)
                           .join(" · ")}
                       </span>
+
+                      <span className="mt-2 block font-[family-name:var(--font-poppins)] text-lg font-bold leading-snug text-white">
+                        {post.title}
+                      </span>
+
+                      {post.excerpt && (
+                        <span className="mt-2 block flex-1 text-sm leading-relaxed text-slate-400">
+                          {post.excerpt}
+                        </span>
+                      )}
+
+                      <span className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
+                        <span className="flex items-center gap-2">
+                          <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500 text-[11px] font-semibold text-white">
+                            {initials(post.author?.name)}
+                          </span>
+                          <span className="text-sm text-slate-300">
+                            {post.author?.name ?? "IPTV Pro"}
+                          </span>
+                        </span>
+                        <span className="text-slate-500 transition group-hover:text-cyan-300">
+                          <BookmarkIcon />
+                        </span>
+                      </span>
                     </span>
                   </Link>
-                ))}
-              </div>
-            )}
+                );
+              })}
+            </div>
           </div>
         )}
       </main>
