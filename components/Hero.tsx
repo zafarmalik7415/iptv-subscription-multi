@@ -1,4 +1,5 @@
 import Image from "next/image";
+import heroSmartTv from "@/public/hero-smart-tv.webp";
 import type { HeroContent } from "@/lib/sanity/types";
 
 const DEFAULT: HeroContent = {
@@ -21,7 +22,7 @@ const DEFAULT: HeroContent = {
 
 export default function Hero({ content }: { content?: HeroContent | null }) {
   const c = content ?? DEFAULT;
-  const heroImage = c.imageUrl ?? "/hero-smart-tv.webp";
+  const heroImage = c.imageUrl ?? heroSmartTv;
 
   return (
     <section className="relative overflow-hidden px-6 pt-16 pb-24 sm:pt-24">
@@ -103,6 +104,9 @@ export default function Hero({ content }: { content?: HeroContent | null }) {
             width={1342}
             height={1047}
             priority
+            fetchPriority="high"
+            quality={65}
+            placeholder={c.imageUrl ? "empty" : "blur"}
             sizes="(min-width: 1024px) 42rem, 90vw"
             className="h-auto w-full drop-shadow-2xl"
           />
