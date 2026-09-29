@@ -199,7 +199,7 @@ const posts: StaticPost[] = [
     ],
     body: [
       p(
-        "Short answer first: IPTV itself is completely legal in the United States. It's a method of sending television over the internet, the same underlying technology that Netflix, Hulu and YouTube TV use every day. Nobody is coming after you for using an app that streams video over IP. What gets complicated isn't the technology, it's the content behind it. Whether a specific IPTV service is legal comes down to whether that provider actually has the rights to the channels it's selling, and that's the part worth understanding before you hand over your card details."
+        "IPTV itself is completely legal in the United States. It's a method of sending television over the internet, the same underlying technology that Netflix, Hulu and YouTube TV use every day. Nobody is coming after you for using an app that streams video over IP. What gets complicated isn't the technology, it's the content behind it. Whether a specific IPTV service is legal comes down to whether that provider actually has the rights to the channels it's selling, and that's the part worth understanding before you hand over your card details."
       ),
 
       h2("IPTV is a delivery method, not a content type"),
