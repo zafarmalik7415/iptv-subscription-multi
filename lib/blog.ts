@@ -16,7 +16,7 @@ const posts: StaticPost[] = [
     excerpt:
       "Confused by 'server URL' or 'portal' when setting up IPTV? Here's what it actually means, where to find it, and how to fix the most common login errors.",
     publishedAt: "2026-08-14",
-    mainImageUrl: "/blog/portal-url-cover.svg",
+    mainImageUrl: "/blog/portal-url-cover.webp",
     author,
     categories: [{ title: "Setup", slug: "setup" }],
     seoTitle: "What Is an IPTV Portal URL? Setup Guide",
