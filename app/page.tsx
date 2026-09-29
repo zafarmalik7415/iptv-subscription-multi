@@ -61,12 +61,21 @@ export default async function Home() {
   const resolvedTestimonials = testimonials ?? DEFAULT_TESTIMONIALS;
   const reviewJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Service",
+    "@type": "Product",
     name: `${siteName} Subscription`,
-    serviceType: "IPTV subscription service",
-    provider: {
-      "@type": "Organization",
+    description:
+      "IPTV subscription service with thousands of live channels, sports, series and movies in HD, Full HD and 4K.",
+    brand: {
+      "@type": "Brand",
       name: siteName,
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      lowPrice: "20",
+      highPrice: "70",
+      offerCount: "4",
+      availability: "https://schema.org/InStock",
     },
     aggregateRating: {
       "@type": "AggregateRating",
