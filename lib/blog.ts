@@ -52,9 +52,11 @@ const posts: StaticPost[] = [
       },
     ],
     body: [
-      p(
-        "When you buy an IPTV subscription for the first time, the activation message can read like a different language. Along with a username and password, there's usually a line called \"server URL\" or \"portal URL\", and sometimes a completely separate M3U link on top of that. If you've never set up IPTV before, it's easy to assume you did something wrong. You didn't. This is just how most providers hand out login details, and once you know what each piece does, setting up a new device takes about two minutes."
-      ),
+      p([
+        "When you buy an ",
+        { text: "IPTV subscription", href: "/" },
+        " for the first time, the activation message can read like a different language. Along with a username and password, there's usually a line called \"server URL\" or \"portal URL\", and sometimes a completely separate M3U link on top of that. If you've never set up IPTV before, it's easy to assume you did something wrong. You didn't. This is just how most providers hand out login details, and once you know what each piece does, setting up a new device takes about two minutes.",
+      ]),
 
       h2("What a portal URL actually is"),
       p(
