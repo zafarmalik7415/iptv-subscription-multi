@@ -7,24 +7,12 @@ import type { Country } from "@/lib/sanity/types";
 
 const whatsappNumber = "447362244111";
 
-const features = [
+const genericFeatures = [
   {
     icon: "🌐",
     title: "Optimized Servers",
     description:
       "Infrastructure and network routing built to deliver the lowest possible latency in your region.",
-  },
-  {
-    icon: "🎬",
-    title: "Local & International Content",
-    description:
-      "International channels, series and movies alongside a selection curated for your area.",
-  },
-  {
-    icon: "🕒",
-    title: "Support In Your Time Zone",
-    description:
-      "Our team is available on WhatsApp and live chat 24/7, no matter your time zone.",
   },
   {
     icon: "🔒",
@@ -35,7 +23,7 @@ const features = [
 ];
 
 function faqsFor(country: Country, place: string) {
-  return [
+  const faqs = [
     {
       question: `Is IPTV legal in ${place}?`,
       answer:
@@ -45,22 +33,24 @@ function faqsFor(country: Country, place: string) {
       question: `Does the IPTV subscription work well in ${place}?`,
       answer: `Yes. Our service works across ${place}, including cities like ${country.cities}, with servers optimized to deliver stable playback in HD, Full HD and 4K.`,
     },
+  ];
+
+  if (country.localFaq) faqs.push(country.localFaq);
+
+  faqs.push(
     {
       question: `Do I need a VPN to use IPTV in ${place}?`,
       answer:
         "Not in most cases. Our platform is built to work directly with your regular internet connection.",
     },
     {
-      question: "How many devices can I connect at once?",
-      answer:
-        "It depends on your plan: from 1 simultaneous connection on the monthly plan up to 4 on the annual plan.",
-    },
-    {
       question: "Can I try an IPTV free trial before committing to a longer plan?",
       answer:
         "Yes, message us on WhatsApp and we'll walk you through activating your subscription and watching channels within minutes.",
-    },
-  ];
+    }
+  );
+
+  return faqs;
 }
 
 export default function CountryPageContent({
@@ -73,6 +63,12 @@ export default function CountryPageContent({
   const otherCountries = countries.filter((c) => c.slug !== country.slug);
   const place = getCountryPlaceName(country);
   const faqs = faqsFor(country, place);
+  const features = [
+    { icon: "📍", ...(country.highlights?.[0] ?? { title: "", description: "" }) },
+    genericFeatures[0],
+    { icon: "🗣️", ...(country.highlights?.[1] ?? { title: "", description: "" }) },
+    genericFeatures[1],
+  ].filter((f) => f.title);
 
   return (
     <main className="flex-1">
@@ -97,6 +93,11 @@ export default function CountryPageContent({
             channels, series and movies in HD, Full HD and 4K, with instant
             activation, a free trial and 24/7 support.
           </p>
+          {country.localAngle && (
+            <p className="mt-4 text-base leading-relaxed text-slate-400">
+              {country.localAngle}
+            </p>
+          )}
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="#plans"

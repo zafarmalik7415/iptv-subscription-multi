@@ -95,6 +95,9 @@ export type CountryRegion =
   | "Europe"
   | "Oceania";
 
+export type CountryHighlight = { title: string; description: string };
+export type CountryFaq = { question: string; answer: string };
+
 export type Country = {
   slug: string;
   name: string;
@@ -103,6 +106,9 @@ export type Country = {
   cities: string;
   description: string;
   region: CountryRegion;
+  localAngle?: string;
+  highlights?: CountryHighlight[];
+  localFaq?: CountryFaq;
 };
 
 export type BlogAuthor = {
