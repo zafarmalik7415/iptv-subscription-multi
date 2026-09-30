@@ -409,7 +409,7 @@ const posts: StaticPost[] = [
     excerpt:
       "Comparing IPTV providers for the UK, USA, Cyprus or Australia? Here's what actually separates a reliable worldwide subscription from one that buffers and disappears, and what to check before you pay.",
     publishedAt: "2026-09-30",
-    mainImageUrl: null,
+    mainImageUrl: "/blog/best-iptv-subscription-worldwide-cover.webp",
     author,
     categories: [{ title: "Guides", slug: "guides" }],
     seoTitle: "Best IPTV Subscription Worldwide: UK, USA, Cyprus, Australia",
