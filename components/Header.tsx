@@ -18,6 +18,11 @@ const links = [
   { href: "/blog/", label: "Blog" },
 ];
 
+const whatsappNumber = "447362244111";
+const freeTrialWhatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  "Hi, I'd like to start my free IPTV trial"
+)}`;
+
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg
@@ -158,10 +163,12 @@ export default function Header({
         </ul>
 
         <a
-          href="/#plans"
+          href={freeTrialWhatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-primary hidden rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:opacity-90 md:inline-block"
         >
-          Free Trial
+          IPTV Free Trial
         </a>
 
         <button
@@ -236,11 +243,13 @@ export default function Header({
             ))}
             <li>
               <a
-                href="/#plans"
+                href={freeTrialWhatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="mt-2 block rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 px-5 py-2.5 text-center text-sm font-semibold text-white"
               >
-                Free Trial
+                IPTV Free Trial
               </a>
             </li>
           </ul>
