@@ -15,9 +15,10 @@ import {
   ES,
   IT,
   AU,
+  CY,
 } from "country-flag-icons/react/3x2";
 
-const flags = { IQ, SA, AE, KW, QA, EG, MA, BH, US, CA, GB, DE, FR, ES, IT, AU };
+const flags = { IQ, SA, AE, KW, QA, EG, MA, BH, US, CA, GB, DE, FR, ES, IT, AU, CY };
 
 export type CountryCode = keyof typeof flags;
 

@@ -145,6 +145,15 @@ export const countries: Country[] = [
     region: "Europe",
   },
   {
+    slug: "iptv-subscription-cyprus",
+    name: "Cyprus",
+    demonym: "Cypriot",
+    code: "CY",
+    cities: "Nicosia, Limassol and Larnaca",
+    description: "Stable IPTV streaming with fast servers for Nicosia, Limassol and all of Cyprus.",
+    region: "Europe",
+  },
+  {
     slug: "iptv-subscription-australia",
     name: "Australia",
     demonym: "Australian",
