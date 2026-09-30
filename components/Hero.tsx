@@ -3,12 +3,12 @@ import heroSmartTv from "@/public/hero-smart-tv.webp";
 import type { HeroContent } from "@/lib/sanity/types";
 
 const DEFAULT: HeroContent = {
-  badge: "The #1 IPTV Subscription Service",
+  badge: "Stop Paying For Channels You Never Watch",
   titleLead: "Your",
   titleAccent: "IPTV Subscription",
-  titleTail: ", No Buffering, No Hassle",
+  titleTail: ", Without The Buffering Or The Bill",
   paragraph:
-    "Enjoy thousands of live channels, sports, series and movies in HD, Full HD and 4K on your Smart TV, phone, PC or Fire Stick. Activation in minutes and 24/7 support, every day of the year.",
+    "Cable locks you into a contract and a bill that keeps climbing. Cheap IPTV alternatives freeze the moment the game gets good. We fixed both: thousands of live channels, sports, series and movies in HD, Full HD and 4K, on any device, for a fraction of your old cable bill, with no contract and a free trial before you pay anything.",
   primaryCta: { label: "Start Free Trial", href: "#plans" },
   secondaryCta: { label: "View Compatible Devices", href: "#devices" },
   stats: [

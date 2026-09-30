@@ -15,6 +15,11 @@ export const faqs = [
       "Our plans start at $20 for one month, with better value on the 3, 6 and 12 month options. That works out far cheaper than most cable packages, while still including every channel and device.",
   },
   {
+    question: "Why does my current IPTV service keep freezing or getting shut down?",
+    answer:
+      "Cheap, unlicensed providers cut corners on server capacity and can disappear overnight with no warning and no refund. We run on optimized, anti-freeze servers and have stayed reliable for customers switching from exactly that kind of service.",
+  },
+  {
     question: "Can I try an IPTV free trial before I subscribe?",
     answer:
       "Yes. Message us on WhatsApp and we'll set you up with a short free trial so you can test the channels and picture quality on your own device before you buy an IPTV subscription.",
@@ -37,11 +42,11 @@ export const faqs = [
   {
     question: "What picture quality do IPTV subscriptions include?",
     answer:
-      "Every plan includes HD, Full HD and 4K channels, with servers built to keep playback smooth wherever you're watching from.",
+      "Every plan includes HD, Full HD and 4K channels, with anti-freeze servers built to stay smooth even during peak hours and big live events, when cheaper services usually start buffering.",
   },
   {
     question: "Do you offer support if something goes wrong?",
     answer:
-      "Yes, our support team is available 24/7 by chat and WhatsApp to help with setup, installation or any issue with your subscription.",
+      "Yes. If a channel drops or a device won't connect, message us on WhatsApp any time and get a real person, not a bot or a support ticket that takes days to get a reply.",
   },
 ];

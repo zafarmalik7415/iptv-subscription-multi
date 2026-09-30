@@ -7,20 +7,21 @@ import type { Country } from "@/lib/sanity/types";
 
 const whatsappNumber = "447362244111";
 
-const genericFeatures = [
-  {
-    icon: "🌐",
-    title: "Optimized Servers",
-    description:
-      "Infrastructure and network routing built to deliver the lowest possible latency in your region.",
-  },
-  {
-    icon: "🔒",
-    title: "Secure Payment, No Contract",
-    description:
-      "Subscribe, switch or cancel your plan whenever you want, with no long-term commitment.",
-  },
-];
+function genericFeaturesFor(place: string) {
+  return [
+    {
+      icon: "🌐",
+      title: "No More Buffering Right When It Matters",
+      description: `No freezing during the big match or the season finale. Servers and routing built to keep streams smooth across ${place}, even at peak times.`,
+    },
+    {
+      icon: "🔒",
+      title: "No Contract, Cancel Anytime",
+      description:
+        "Not locked into a year like cable. Switch plans or cancel whenever you want, with no penalty and no surprise renewal.",
+    },
+  ];
+}
 
 function faqsFor(country: Country, place: string) {
   const faqs = [
@@ -63,6 +64,7 @@ export default function CountryPageContent({
   const otherCountries = countries.filter((c) => c.slug !== country.slug);
   const place = getCountryPlaceName(country);
   const faqs = faqsFor(country, place);
+  const genericFeatures = genericFeaturesFor(place);
   const features = [
     { icon: "📍", ...(country.highlights?.[0] ?? { title: "", description: "" }) },
     genericFeatures[0],
@@ -88,10 +90,12 @@ export default function CountryPageContent({
             <span className="text-gradient">{place}</span>
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-slate-300">
-            Premium live streaming for {country.demonym} customers in{" "}
-            {country.cities} and across the rest of the country. Thousands of
-            channels, series and movies in HD, Full HD and 4K, with instant
-            activation, a free trial and 24/7 support.
+            No more overpriced cable bills or an IPTV service that buffers
+            right when it matters. Premium live streaming for{" "}
+            {country.demonym} customers in {country.cities} and across the
+            rest of the country, with thousands of channels, series and
+            movies in HD, Full HD and 4K, instant activation, a free trial
+            and 24/7 support.
           </p>
           {country.localAngle && (
             <p className="mt-4 text-base leading-relaxed text-slate-400">
