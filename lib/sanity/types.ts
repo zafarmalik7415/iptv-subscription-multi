@@ -91,6 +91,7 @@ export type InstallationExtra = {
 
 export type CountryRegion =
   | "Middle East & North Africa"
+  | "Africa"
   | "Americas"
   | "Europe"
   | "Oceania";

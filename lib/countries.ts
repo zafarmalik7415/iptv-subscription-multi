@@ -8,7 +8,7 @@ export type Country = {
   code: string;
   cities: string;
   description: string;
-  region: "Middle East & North Africa" | "Americas" | "Europe" | "Oceania";
+  region: "Middle East & North Africa" | "Africa" | "Americas" | "Europe" | "Oceania";
   /** One or two sentences of context genuinely specific to this country, not reused elsewhere. */
   localAngle: string;
   /** Two country-specific "why choose us" cards, shown alongside the generic ones. */
@@ -455,6 +455,188 @@ export const countries: Country[] = [
         "We route Australian customers through infrastructure chosen to minimize that distance, which is the main reason some other IPTV services struggle here.",
     },
   },
+  {
+    slug: "iptv-subscription-serbia",
+    name: "Serbia",
+    demonym: "Serbian",
+    code: "RS",
+    cities: "Belgrade and Novi Sad",
+    description: "Fast, reliable IPTV streaming for Belgrade, Novi Sad and all of Serbia.",
+    region: "Europe",
+    localAngle:
+      "Serbian households often split their viewing between Serbian-language news and drama and the international sport everyone's discussing the next day, so we keep both on the same subscription instead of making you choose.",
+    highlights: [
+      {
+        title: "Serbian & Regional Balkan Channels",
+        description: "Serbian-language news and drama alongside regional Balkan channels, all on one login.",
+      },
+      {
+        title: "Built For Football-Mad Households",
+        description: "International sport coverage alongside local channels, so you're never choosing between the match and the news.",
+      },
+    ],
+    localFaq: {
+      question: "Are Serbian-language channels included, or only international ones?",
+      answer:
+        "Serbian-language channels are included as standard, alongside regional Balkan and international options.",
+    },
+  },
+  {
+    slug: "iptv-subscription-senegal",
+    name: "Senegal",
+    demonym: "Senegalese",
+    code: "SN",
+    cities: "Dakar and Thiès",
+    description: "Reliable live TV and VOD streaming across Dakar, Thiès and Senegal.",
+    region: "Africa",
+    localAngle:
+      "Senegalese viewers often want French-language channels alongside West African and international content, and with so many families split between Senegal and the diaspora in France, we built the lineup around that exact mix.",
+    highlights: [
+      {
+        title: "French & West African Channels",
+        description: "French-language channels alongside West African and international programming, on one subscription.",
+      },
+      {
+        title: "Built For Senegal's Connections",
+        description: "Servers and routing tuned to stay stable on typical mobile and home internet speeds across Senegal.",
+      },
+    ],
+    localFaq: {
+      question: "Are French-language channels included for Senegal?",
+      answer:
+        "Yes, French-language channels are included as standard alongside West African and international options.",
+    },
+  },
+  {
+    slug: "iptv-subscription-tunisia",
+    name: "Tunisia",
+    demonym: "Tunisian",
+    code: "TN",
+    cities: "Tunis and Sfax",
+    description: "Live channels, sports and VOD streaming for Tunis, Sfax and all of Tunisia.",
+    region: "Middle East & North Africa",
+    localAngle:
+      "Tunisian households tend to mix Arabic and French channels day to day, much like neighboring Morocco and Algeria, so our lineup covers both alongside international sport and entertainment.",
+    highlights: [
+      {
+        title: "Arabic & French Channels Together",
+        description: "A channel list built around Tunisia's bilingual viewing habits, Arabic and French side by side.",
+      },
+      {
+        title: "Reliable Across Tunisia",
+        description: "Servers optimized to keep playback smooth from Tunis to Sfax and beyond.",
+      },
+    ],
+    localFaq: {
+      question: "Are French-language channels included alongside Arabic ones?",
+      answer:
+        "Yes, French channels are included alongside Arabic and international options, matching how most households in Tunisia actually watch TV.",
+    },
+  },
+  {
+    slug: "iptv-subscription-albania",
+    name: "Albania",
+    demonym: "Albanian",
+    code: "AL",
+    cities: "Tirana and Durrës",
+    description: "Stable IPTV streaming with fast servers for Tirana, Durrës and all of Albania.",
+    region: "Europe",
+    localAngle:
+      "Albania has one of the largest diasporas relative to its population in Europe, so alongside Albanian-language channels we make sure Italian and other European content families keep up with abroad is covered too.",
+    highlights: [
+      {
+        title: "Albanian & European Channels",
+        description: "Albanian-language news and entertainment alongside Italian and wider European options, all on one subscription.",
+      },
+      {
+        title: "Built For Albania's Diaspora Families",
+        description: "A channel mix that reflects how many Albanian households stay connected with relatives and content across Europe.",
+      },
+    ],
+    localFaq: {
+      question: "Can I get Albanian channels alongside Italian or other European ones?",
+      answer:
+        "Yes, Albanian-language channels are included alongside Italian and other European options, which is exactly why so many households with family abroad use the service.",
+    },
+  },
+  {
+    slug: "iptv-subscription-algeria",
+    name: "Algeria",
+    demonym: "Algerian",
+    code: "DZ",
+    cities: "Algiers and Oran",
+    description: "Premium IPTV streaming with fast servers for Algiers, Oran and all of Algeria.",
+    region: "Middle East & North Africa",
+    localAngle:
+      "Algerian households typically mix Arabic and French channels, and with such a large Algerian community living in France, keeping both covered on one subscription matters more here than in most markets.",
+    highlights: [
+      {
+        title: "Arabic & French Channels Together",
+        description: "Arabic programming alongside French-language channels, reflecting how most households in Algeria actually watch TV.",
+      },
+      {
+        title: "Reliable Across Algeria",
+        description: "Servers tuned to stream smoothly from Algiers to Oran and beyond.",
+      },
+    ],
+    localFaq: {
+      question: "Are French channels included for Algeria, or just Arabic ones?",
+      answer:
+        "Both. French-language channels are included as standard alongside Arabic and international options.",
+    },
+  },
+  {
+    slug: "iptv-subscription-finland",
+    name: "Finland",
+    demonym: "Finnish",
+    code: "FI",
+    cities: "Helsinki and Tampere",
+    description: "Fast, stable IPTV streaming for Helsinki, Tampere and all of Finland.",
+    region: "Europe",
+    localAngle:
+      "Finnish viewers lean heavily on streaming through the long winter months, so stable playback during peak evening hours matters more here than almost anywhere else we operate.",
+    highlights: [
+      {
+        title: "Built For Peak Winter Viewing",
+        description: "Extra server headroom for the evening hours when Finnish households stream the most, especially during winter.",
+      },
+      {
+        title: "Nordic & International Channels",
+        description: "A channel list that pairs Nordic programming with a full international lineup.",
+      },
+    ],
+    localFaq: {
+      question: "Does the service stay stable during busy winter evenings?",
+      answer:
+        "Yes, we keep extra server capacity in place specifically for the peak evening hours when Finnish households are streaming the most.",
+    },
+  },
+  {
+    slug: "iptv-subscription-netherlands",
+    name: "Netherlands",
+    demonym: "Dutch",
+    code: "NL",
+    cities: "Amsterdam and Rotterdam",
+    description: "Live channels and movies streaming smoothly across Amsterdam, Rotterdam and the Netherlands.",
+    region: "Europe",
+    localAngle:
+      "Amsterdam and Rotterdam both have large international populations alongside Dutch locals, so we pair Dutch-language channels with a broad English and international lineup rather than assuming everyone watches the same thing.",
+    highlights: [
+      {
+        title: "Dutch & International Channels",
+        description: "Dutch-language TV alongside a broad English and international lineup, built for the Netherlands' mix of locals and expats.",
+      },
+      {
+        title: "Fast Servers Across The Netherlands",
+        description: "Routing tuned to keep playback smooth from Amsterdam to Rotterdam and beyond.",
+      },
+    ],
+    localFaq: {
+      question: "Are Dutch-language channels included, or mostly international ones?",
+      answer:
+        "Dutch-language channels are included as standard, alongside a full English and international lineup for the Netherlands' many expats.",
+    },
+  },
 ];
 
 export function getCountry(slug: string) {
@@ -465,6 +647,7 @@ const shortNames: Record<string, string> = {
   "iptv-subscription-uk": "the UK",
   "iptv-subscription-usa": "the USA",
   "iptv-subscription-uae": "the UAE",
+  "iptv-subscription-netherlands": "the Netherlands",
 };
 
 /** Search-friendly place name for titles and headings, e.g. "the UK" instead of "United Kingdom". */
